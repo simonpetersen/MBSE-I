@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<genmodel:GenModel xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore"
+    xmlns:genmodel="http://www.eclipse.org/emf/2002/GenModel" modelDirectory="/dtu.mbse.groupi.yawl/src" modelPluginID="dtu.mbse.groupi.yawl"
+    modelName="YAWL" rootExtendsClass="org.eclipse.emf.ecore.impl.MinimalEObjectImpl$Container"
+    importerID="org.eclipse.emf.importer.ecore" complianceLevel="8.0" copyrightFields="false"
+    usedGenPackages="../../org.pnml.tools.epnk/model/PNMLCoreModel.genmodel#//pnmlcoremodel"
+    importOrganizing="true">
+  <foreignModel>YAWL.ecore</foreignModel>
+  <genPackages prefix="Yawl" basePackage="dtu.mbse.groupi" disposableProviderFactory="true"
+      ecorePackage="YAWL.ecore#/">
+    <genEnums typeSafeEnumCompatible="false" ecoreEnum="YAWL.ecore#//ArcTypes">
+      <genEnumLiterals ecoreEnumLiteral="YAWL.ecore#//ArcTypes/normal"/>
+      <genEnumLiterals ecoreEnumLiteral="YAWL.ecore#//ArcTypes/reset"/>
+    </genEnums>
+    <genEnums typeSafeEnumCompatible="false" ecoreEnum="YAWL.ecore#//PlaceTypes">
+      <genEnumLiterals ecoreEnumLiteral="YAWL.ecore#//PlaceTypes/condition"/>
+      <genEnumLiterals ecoreEnumLiteral="YAWL.ecore#//PlaceTypes/start"/>
+      <genEnumLiterals ecoreEnumLiteral="YAWL.ecore#//PlaceTypes/end"/>
+    </genEnums>
+    <genEnums typeSafeEnumCompatible="false" ecoreEnum="YAWL.ecore#//SplitTypes">
+      <genEnumLiterals ecoreEnumLiteral="YAWL.ecore#//SplitTypes/single"/>
+      <genEnumLiterals ecoreEnumLiteral="YAWL.ecore#//SplitTypes/XORsplit"/>
+      <genEnumLiterals ecoreEnumLiteral="YAWL.ecore#//SplitTypes/ORsplit"/>
+      <genEnumLiterals ecoreEnumLiteral="YAWL.ecore#//SplitTypes/ANDsplit"/>
+    </genEnums>
+    <genEnums typeSafeEnumCompatible="false" ecoreEnum="YAWL.ecore#//JoinTypes">
+      <genEnumLiterals ecoreEnumLiteral="YAWL.ecore#//JoinTypes/single"/>
+      <genEnumLiterals ecoreEnumLiteral="YAWL.ecore#//JoinTypes/XORjoin"/>
+      <genEnumLiterals ecoreEnumLiteral="YAWL.ecore#//JoinTypes/ORjoin"/>
+      <genEnumLiterals ecoreEnumLiteral="YAWL.ecore#//JoinTypes/ANDjoin"/>
+    </genEnums>
+    <genClasses ecoreClass="YAWL.ecore#//Place">
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference YAWL.ecore#//Place/type"/>
+    </genClasses>
+    <genClasses ecoreClass="YAWL.ecore#//YawlNet"/>
+    <genClasses ecoreClass="YAWL.ecore#//Transition">
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference YAWL.ecore#//Transition/splitType"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference YAWL.ecore#//Transition/joinType"/>
+    </genClasses>
+    <genClasses ecoreClass="YAWL.ecore#//Arc">
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference YAWL.ecore#//Arc/type"/>
+    </genClasses>
+    <genClasses ecoreClass="YAWL.ecore#//ArcType">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute YAWL.ecore#//ArcType/text"/>
+      <genFeatures property="None" notify="false" createChild="false" ecoreFeature="ecore:EReference YAWL.ecore#//ArcType/arc"/>
+    </genClasses>
+    <genClasses ecoreClass="YAWL.ecore#//PlaceType">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute YAWL.ecore#//PlaceType/text"/>
+      <genFeatures property="None" notify="false" createChild="false" ecoreFeature="ecore:EReference YAWL.ecore#//PlaceType/place"/>
+    </genClasses>
+    <genClasses ecoreClass="YAWL.ecore#//SplitType">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute YAWL.ecore#//SplitType/text"/>
+      <genFeatures property="None" notify="false" createChild="false" ecoreFeature="ecore:EReference YAWL.ecore#//SplitType/transition"/>
+    </genClasses>
+    <genClasses ecoreClass="YAWL.ecore#//JoinType">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute YAWL.ecore#//JoinType/text"/>
+      <genFeatures property="None" notify="false" createChild="false" ecoreFeature="ecore:EReference YAWL.ecore#//JoinType/transition"/>
+    </genClasses>
+  </genPackages>
+</genmodel:GenModel>

@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<genmodel:GenModel xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore"
+    xmlns:genmodel="http://www.eclipse.org/emf/2002/GenModel" modelDirectory="/dtu.mbse.groupi.yawl.simulator/src" modelPluginID="dtu.mbse.groupi.yawl.simulator"
+    modelName="YawlAnnotations" rootExtendsClass="org.eclipse.emf.ecore.impl.MinimalEObjectImpl$Container"
+    importerID="org.eclipse.emf.importer.ecore" complianceLevel="8.0" copyrightFields="false"
+    usedGenPackages="../../org.pnml.tools.epnk.annotations/model/NetAnnotations.genmodel#//netannotations ../../org.pnml.tools.epnk/model/PNMLCoreModel.genmodel#//pnmlcoremodel"
+    importOrganizing="true">
+  <foreignModel>YawlAnnotations.ecore</foreignModel>
+  <genPackages prefix="Yawlsimulator" basePackage="dtu.mbse.groupi" disposableProviderFactory="true"
+      ecorePackage="YawlAnnotations.ecore#/">
+    <genClasses ecoreClass="YawlAnnotations.ecore#//EnabledTransition">
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference YawlAnnotations.ecore#//EnabledTransition/inArcs"/>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference YawlAnnotations.ecore#//EnabledTransition/outArcs"/>
+    </genClasses>
+    <genClasses ecoreClass="YawlAnnotations.ecore#//SelectArc">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute YawlAnnotations.ecore#//SelectArc/selected"/>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference YawlAnnotations.ecore#//SelectArc/sourceTransition"/>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference YawlAnnotations.ecore#//SelectArc/targetTransition"/>
+    </genClasses>
+    <genClasses ecoreClass="YawlAnnotations.ecore#//Marking">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute YawlAnnotations.ecore#//Marking/value"/>
+    </genClasses>
+  </genPackages>
+</genmodel:GenModel>

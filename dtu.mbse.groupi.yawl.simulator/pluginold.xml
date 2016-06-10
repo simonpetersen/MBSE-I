@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?eclipse version="3.0"?>
+
+<!--
+-->
+
+<plugin>
+
+	<!-- TODO: change the id to a proper one (unqique) -->
+   	<extension
+         id="dtu.mbse.groupi.yawl.simulator"
+         name="Yawl Simulator"
+         point="org.pnml.tools.epnk.applications.applicationfactory">
+     <!-- TODO: change the class attribute to the fully quantified name
+                 of the Java class of your application factory -->
+     <applicationfactory
+            class="dtu.mbse.groupi.yawl.simulator.application.YawlSimulatorApplicationFactory"
+            description="A simple YAWL simulator for tutorial 8 of the MBSE course">
+     </applicationfactory>
+   	</extension>
+
+   <extension point="org.eclipse.emf.ecore.generated_package">
+      <!-- @generated YawlAnnotations -->
+      <package
+            uri="http://org.pnml.tools/epnk/types/yawl/simulator"
+            class="dtu.mbse.groupi.yawlsimulator.YawlsimulatorPackage"
+            genModel="model/YawlAnnotations.genmodel"/>
+   </extension>
+
+</plugin>

@@ -1,0 +1,128 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?eclipse version="3.0"?>
+
+<!--
+-->
+
+<plugin>
+
+   <extension
+   id="dtu.mbse.groupi.yawl"
+   name="YAWL Nets"
+   point="org.pnml.tools.epnk.pntd" >
+   <type
+      class="dtu.mbse.groupi.yawl.impl.YawlNetImpl"
+      description="YAWL Net" />
+	</extension>
+	
+	<extension
+	id="dtu.mbse.groupi.yawl.graphics"
+	name="Yawl net graphical extensions"
+	point="org.pnml.tools.epnk.diagram.graphics">
+	<graphicsextension
+		class="dtu.mbse.groupi.yawl.graphics.YawlGraphics"
+		description="Special graphics for YAWL nets" >
+	</graphicsextension>
+	</extension>
+	
+	    <extension
+         point="org.eclipse.emf.validation.constraintProviders">
+      <constraintProvider
+            cache="true">
+         <!-- TODO this should be refering to the URI of your YAWL net model -->
+         <package
+               namespaceUri="http://org.pnml.tools/epnk/types/yawl">
+         </package>
+         <constraints categories="org.pnml.tools.epnk.validation">
+            <constraint
+                  id="dk.dtu.compute.mbse.yawl.validation.correct-arc-connection"
+                  lang="OCL"
+                  mode="Live"
+                  name="Arc connection constraint for YAWL nets"
+                  severity="ERROR"
+                  statusCode="401">
+               <message>
+                  The arc {0} with this arc type is not allowed between these elements.
+               </message>
+               <description>
+                  Arcs must be between a place and a transition, a transition and a place, or
+                  between two transitions. Only arcs between a place and a transition may have
+                  a type! 
+               </description>
+               <!-- TODO the class you refer to the Arc of your YWAL Ecore model,
+                    the class name and the URI of the packake separated by a comma -->
+               <target
+                     class="Arc:http://org.pnml.tools/epnk/types/yawl">
+                  <!-- since this is a live constraint, you need to refer to tell the
+                       validator when to check the constraint: in terms of events here
+                       we use set events on the following features -->
+                  <event
+                        name="Set">
+                     <feature
+                           name="source">
+                     </feature>
+                     <feature
+                           name="target">
+                     </feature>
+                     <!-- TODO the feature "type" is the reference to the Attribute defining the type
+                          of the arc) -->
+                     <feature
+                           name="type">
+                     </feature>
+                  </event>
+               </target>
+               <!-- The actual OCL constraint follows
+               
+                    TODO you might need to change self.type->size() which says that
+                    you cannot set the type of an arc for arcs running from a tarnsition
+                    to a place -->
+               <![CDATA[
+                 ( self.source.oclIsKindOf(pnmlcoremodel::PlaceNode) and
+                   self.target.oclIsKindOf(pnmlcoremodel::TransitionNode) )
+                 or
+                 ( self.source.oclIsKindOf(pnmlcoremodel::TransitionNode) and
+                   self.target.oclIsKindOf(pnmlcoremodel::PlaceNode) and
+                   (self.type->size() = 0 or self.type.text = ArcTypes::normal) )
+               ]]>
+            </constraint>
+         </constraints>
+      </constraintProvider>
+   </extension>
+   
+   <extension
+         point="org.eclipse.emf.validation.constraintProviders">
+      <constraintProvider
+            cache="true">
+         <package
+               namespaceUri="http://org.pnml.tools/epnk/types/yawl">
+         </package>
+         <constraints categories="org.pnml.tools.epnk.validation">
+            <constraint
+                  lang="Java"
+                  class="dtu.mbse.groupi.yawl.util.StartEndConditions"
+                  severity="ERROR"
+                  mode="Batch"
+                  name="One start and end place"
+                  id="dk.dtu.compute.mbse.yawl.validation.one-start-and-end-place"
+                  statusCode="402">
+               <target class="YawlNet:http://mbse-f16.groupi.dtu.dk/yawl"/>
+               <description>
+                  A YAWL net must have one start and end place.
+               </description>
+               <message>
+                  The YAWL net {0} does not have exactly one start place and one end place.
+               </message>
+            </constraint>
+         </constraints>
+      </constraintProvider>
+   </extension>
+
+   <extension point="org.eclipse.emf.ecore.generated_package">
+      <!-- @generated YAWL -->
+      <package
+            uri="http://org.pnml.tools/epnk/types/yawl"
+            class="dtu.mbse.groupi.yawl.YawlPackage"
+            genModel="model/YAWL.genmodel"/>
+   </extension>
+
+</plugin>
