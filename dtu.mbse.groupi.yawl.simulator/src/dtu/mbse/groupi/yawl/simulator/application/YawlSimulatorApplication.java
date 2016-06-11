@@ -14,6 +14,7 @@ import org.pnml.tools.epnk.pnmlcoremodel.PetriNet;
 import org.pnml.tools.epnk.pnmlcoremodel.PlaceNode;
 import org.pnml.tools.epnk.pnmlcoremodel.Transition;
 
+import dtu.mbse.groupi.yawl.JoinTypes;
 import dtu.mbse.groupi.yawl.Place;
 import dtu.mbse.groupi.yawlsimulator.EnabledTransition;
 import dtu.mbse.groupi.yawlsimulator.Marking;
@@ -47,7 +48,8 @@ public class YawlSimulatorApplication extends ApplicationWithUIManager {
 				Place yawlPlace = (Place) place;
 				if (place.getIn().isEmpty() && !place.getOut().isEmpty())
 					marking.put(yawlPlace, 1);
-				else marking.put(yawlPlace, 0);
+				else
+					marking.put(yawlPlace, 0);
 			}
 		}
 		return marking;
@@ -80,20 +82,42 @@ public class YawlSimulatorApplication extends ApplicationWithUIManager {
 	}
 
 	boolean enabled(FlatAccess flatNet, Map<Place, Integer> marking, Transition transition) {
-		for (Arc arc : flatNet.getIn(transition)) {
-			if (arc instanceof Arc) {
-				Object source = arc.getSource();
-				if (source instanceof PlaceNode) {
-					source = flatNet.resolve((PlaceNode) source);
-					if (source instanceof Place) {
-						if (marking.containsKey(source)) {
-							int available = marking.get(source);
-							if (available > 0)
-								return true;
+		if (transition instanceof dtu.mbse.groupi.yawl.Transition) {
+			dtu.mbse.groupi.yawl.Transition yawlTransition = (dtu.mbse.groupi.yawl.Transition) transition;
+			if (yawlTransition.getJoinType().getText() == JoinTypes.AN_DJOIN) {
+				for (Arc arc : flatNet.getIn(transition)) {
+					if (arc instanceof Arc) {
+						Object source = arc.getSource();
+						if (source instanceof PlaceNode) {
+							source = flatNet.resolve((PlaceNode) source);
+							if (source instanceof Place) {
+								if (marking.containsKey(source)) {
+									if (marking.get(source) == 0)
+										return false;
+								}
+							}
+
 						}
 					}
-
 				}
+			return true;
+			} if (yawlTransition.getJoinType().getText() == JoinTypes.ORJOIN) {
+				for (Arc arc : flatNet.getIn(transition)) {
+					if (arc instanceof Arc) {
+						Object source = arc.getSource();
+						if (source instanceof PlaceNode) {
+							source = flatNet.resolve((PlaceNode) source);
+							if (source instanceof Place) {
+								if (marking.containsKey(source)) {
+									if (marking.get(source) > 0)
+										return true;
+								}
+							}
+
+						}
+					}
+				}
+			return false;
 			}
 		}
 		return false;
