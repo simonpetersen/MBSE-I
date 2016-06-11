@@ -45,7 +45,9 @@ public class YawlSimulatorApplication extends ApplicationWithUIManager {
 		for (org.pnml.tools.epnk.pnmlcoremodel.Place place : flatNet.getPlaces()) {
 			if (place instanceof Place) {
 				Place yawlPlace = (Place) place;
-				marking.put(yawlPlace, 1);
+				if (place.getIn().isEmpty() && !place.getOut().isEmpty())
+					marking.put(yawlPlace, 1);
+				else marking.put(yawlPlace, 0);
 			}
 		}
 		return marking;
