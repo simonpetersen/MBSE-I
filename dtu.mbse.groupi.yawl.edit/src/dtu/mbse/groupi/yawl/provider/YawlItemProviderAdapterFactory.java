@@ -210,49 +210,26 @@ public class YawlItemProviderAdapterFactory extends YawlAdapterFactory implement
 	}
 
 	/**
-	 * This keeps track of the one adapter used for all {@link dtu.mbse.groupi.yawl.SplitType} instances.
+	 * This keeps track of the one adapter used for all {@link dtu.mbse.groupi.yawl.TransitionType} instances.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	protected SplitTypeItemProvider splitTypeItemProvider;
+	protected TransitionTypeItemProvider transitionTypeItemProvider;
 
 	/**
-	 * This creates an adapter for a {@link dtu.mbse.groupi.yawl.SplitType}.
+	 * This creates an adapter for a {@link dtu.mbse.groupi.yawl.TransitionType}.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
 	@Override
-	public Adapter createSplitTypeAdapter() {
-		if (splitTypeItemProvider == null) {
-			splitTypeItemProvider = new SplitTypeItemProvider(this);
+	public Adapter createTransitionTypeAdapter() {
+		if (transitionTypeItemProvider == null) {
+			transitionTypeItemProvider = new TransitionTypeItemProvider(this);
 		}
 
-		return splitTypeItemProvider;
-	}
-
-	/**
-	 * This keeps track of the one adapter used for all {@link dtu.mbse.groupi.yawl.JoinType} instances.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	protected JoinTypeItemProvider joinTypeItemProvider;
-
-	/**
-	 * This creates an adapter for a {@link dtu.mbse.groupi.yawl.JoinType}.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	@Override
-	public Adapter createJoinTypeAdapter() {
-		if (joinTypeItemProvider == null) {
-			joinTypeItemProvider = new JoinTypeItemProvider(this);
-		}
-
-		return joinTypeItemProvider;
+		return transitionTypeItemProvider;
 	}
 
 	/**
@@ -360,8 +337,7 @@ public class YawlItemProviderAdapterFactory extends YawlAdapterFactory implement
 		if (arcItemProvider != null) arcItemProvider.dispose();
 		if (arcTypeItemProvider != null) arcTypeItemProvider.dispose();
 		if (placeTypeItemProvider != null) placeTypeItemProvider.dispose();
-		if (splitTypeItemProvider != null) splitTypeItemProvider.dispose();
-		if (joinTypeItemProvider != null) joinTypeItemProvider.dispose();
+		if (transitionTypeItemProvider != null) transitionTypeItemProvider.dispose();
 	}
 
 }

@@ -14,7 +14,6 @@ import org.pnml.tools.epnk.pnmlcoremodel.Attribute;
  * </p>
  * <ul>
  *   <li>{@link dtu.mbse.groupi.yawl.ArcType#getText <em>Text</em>}</li>
- *   <li>{@link dtu.mbse.groupi.yawl.ArcType#getArc <em>Arc</em>}</li>
  * </ul>
  *
  * @see dtu.mbse.groupi.yawl.YawlPackage#getArcType()
@@ -50,33 +49,5 @@ public interface ArcType extends Attribute {
 	 * @generated
 	 */
 	void setText(ArcTypes value);
-
-	/**
-	 * Returns the value of the '<em><b>Arc</b></em>' container reference.
-	 * It is bidirectional and its opposite is '{@link dtu.mbse.groupi.yawl.Arc#getType <em>Type</em>}'.
-	 * <!-- begin-user-doc -->
-	 * <p>
-	 * If the meaning of the '<em>Arc</em>' container reference isn't clear,
-	 * there really should be more of a description here...
-	 * </p>
-	 * <!-- end-user-doc -->
-	 * @return the value of the '<em>Arc</em>' container reference.
-	 * @see #setArc(Arc)
-	 * @see dtu.mbse.groupi.yawl.YawlPackage#getArcType_Arc()
-	 * @see dtu.mbse.groupi.yawl.Arc#getType
-	 * @model opposite="type" transient="false"
-	 * @generated
-	 */
-	Arc getArc();
-
-	/**
-	 * Sets the value of the '{@link dtu.mbse.groupi.yawl.ArcType#getArc <em>Arc</em>}' container reference.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @param value the new value of the '<em>Arc</em>' container reference.
-	 * @see #getArc()
-	 * @generated
-	 */
-	void setArc(Arc value);
 
 } // ArcType

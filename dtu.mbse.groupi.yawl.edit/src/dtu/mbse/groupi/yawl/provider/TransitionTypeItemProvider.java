@@ -3,8 +3,8 @@
 package dtu.mbse.groupi.yawl.provider;
 
 
-import dtu.mbse.groupi.yawl.SplitType;
-import dtu.mbse.groupi.yawl.SplitTypes;
+import dtu.mbse.groupi.yawl.TransitionType;
+import dtu.mbse.groupi.yawl.TransitionTypes;
 import dtu.mbse.groupi.yawl.YawlPackage;
 
 import java.util.Collection;
@@ -23,19 +23,19 @@ import org.eclipse.emf.edit.provider.ViewerNotification;
 import org.pnml.tools.epnk.pnmlcoremodel.provider.AttributeItemProvider;
 
 /**
- * This is the item provider adapter for a {@link dtu.mbse.groupi.yawl.SplitType} object.
+ * This is the item provider adapter for a {@link dtu.mbse.groupi.yawl.TransitionType} object.
  * <!-- begin-user-doc -->
  * <!-- end-user-doc -->
  * @generated
  */
-public class SplitTypeItemProvider extends AttributeItemProvider {
+public class TransitionTypeItemProvider extends AttributeItemProvider {
 	/**
 	 * This constructs an instance from a factory and a notifier.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public SplitTypeItemProvider(AdapterFactory adapterFactory) {
+	public TransitionTypeItemProvider(AdapterFactory adapterFactory) {
 		super(adapterFactory);
 	}
 
@@ -66,9 +66,9 @@ public class SplitTypeItemProvider extends AttributeItemProvider {
 			(createItemPropertyDescriptor
 				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
 				 getResourceLocator(),
-				 getString("_UI_SplitType_text_feature"),
-				 getString("_UI_PropertyDescriptor_description", "_UI_SplitType_text_feature", "_UI_SplitType_type"),
-				 YawlPackage.Literals.SPLIT_TYPE__TEXT,
+				 getString("_UI_TransitionType_text_feature"),
+				 getString("_UI_PropertyDescriptor_description", "_UI_TransitionType_text_feature", "_UI_TransitionType_type"),
+				 YawlPackage.Literals.TRANSITION_TYPE__TEXT,
 				 true,
 				 false,
 				 false,
@@ -78,14 +78,14 @@ public class SplitTypeItemProvider extends AttributeItemProvider {
 	}
 
 	/**
-	 * This returns SplitType.gif.
+	 * This returns TransitionType.gif.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
 	@Override
 	public Object getImage(Object object) {
-		return overlayImage(object, getResourceLocator().getImage("full/obj16/SplitType"));
+		return overlayImage(object, getResourceLocator().getImage("full/obj16/TransitionType"));
 	}
 
 	/**
@@ -96,11 +96,11 @@ public class SplitTypeItemProvider extends AttributeItemProvider {
 	 */
 	@Override
 	public String getText(Object object) {
-		SplitTypes labelValue = ((SplitType)object).getText();
+		TransitionTypes labelValue = ((TransitionType)object).getText();
 		String label = labelValue == null ? null : labelValue.toString();
 		return label == null || label.length() == 0 ?
-			getString("_UI_SplitType_type") :
-			getString("_UI_SplitType_type") + " " + label;
+			getString("_UI_TransitionType_type") :
+			getString("_UI_TransitionType_type") + " " + label;
 	}
 	
 
@@ -115,8 +115,8 @@ public class SplitTypeItemProvider extends AttributeItemProvider {
 	public void notifyChanged(Notification notification) {
 		updateChildren(notification);
 
-		switch (notification.getFeatureID(SplitType.class)) {
-			case YawlPackage.SPLIT_TYPE__TEXT:
+		switch (notification.getFeatureID(TransitionType.class)) {
+			case YawlPackage.TRANSITION_TYPE__TEXT:
 				fireNotifyChanged(new ViewerNotification(notification, notification.getNotifier(), false, true));
 				return;
 		}

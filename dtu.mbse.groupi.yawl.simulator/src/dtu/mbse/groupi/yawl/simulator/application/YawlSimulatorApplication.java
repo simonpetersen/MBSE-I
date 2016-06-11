@@ -14,8 +14,9 @@ import org.pnml.tools.epnk.pnmlcoremodel.PetriNet;
 import org.pnml.tools.epnk.pnmlcoremodel.PlaceNode;
 import org.pnml.tools.epnk.pnmlcoremodel.Transition;
 
-import dtu.mbse.groupi.yawl.JoinTypes;
 import dtu.mbse.groupi.yawl.Place;
+import dtu.mbse.groupi.yawl.TransitionTypes;
+import dtu.mbse.groupi.yawl.util.YawlFunctions;
 import dtu.mbse.groupi.yawlsimulator.EnabledTransition;
 import dtu.mbse.groupi.yawlsimulator.Marking;
 import dtu.mbse.groupi.yawlsimulator.YawlsimulatorFactory;
@@ -46,7 +47,7 @@ public class YawlSimulatorApplication extends ApplicationWithUIManager {
 		for (org.pnml.tools.epnk.pnmlcoremodel.Place place : flatNet.getPlaces()) {
 			if (place instanceof Place) {
 				Place yawlPlace = (Place) place;
-				if (place.getIn().isEmpty() && !place.getOut().isEmpty())
+				if (YawlFunctions.isStartPlace(yawlPlace))
 					marking.put(yawlPlace, 1);
 				else
 					marking.put(yawlPlace, 0);
@@ -84,7 +85,7 @@ public class YawlSimulatorApplication extends ApplicationWithUIManager {
 	boolean enabled(FlatAccess flatNet, Map<Place, Integer> marking, Transition transition) {
 		if (transition instanceof dtu.mbse.groupi.yawl.Transition) {
 			dtu.mbse.groupi.yawl.Transition yawlTransition = (dtu.mbse.groupi.yawl.Transition) transition;
-			if (yawlTransition.getJoinType().getText() == JoinTypes.AN_DJOIN) {
+			if (yawlTransition.getJoinType().getText() == TransitionTypes.AND) {
 				for (Arc arc : flatNet.getIn(transition)) {
 					if (arc instanceof Arc) {
 						Object source = arc.getSource();
@@ -101,7 +102,7 @@ public class YawlSimulatorApplication extends ApplicationWithUIManager {
 					}
 				}
 			return true;
-			} if (yawlTransition.getJoinType().getText() == JoinTypes.ORJOIN) {
+			} else if (yawlTransition.getJoinType().getText() == TransitionTypes.OR) {
 				for (Arc arc : flatNet.getIn(transition)) {
 					if (arc instanceof Arc) {
 						Object source = arc.getSource();

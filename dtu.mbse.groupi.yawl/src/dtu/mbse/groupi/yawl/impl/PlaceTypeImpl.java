@@ -3,14 +3,9 @@
 package dtu.mbse.groupi.yawl.impl;
 
 import org.eclipse.emf.common.notify.Notification;
-import org.eclipse.emf.common.notify.NotificationChain;
 import org.eclipse.emf.ecore.EClass;
-import org.eclipse.emf.ecore.InternalEObject;
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
-import org.eclipse.emf.ecore.util.EcoreUtil;
 import org.pnml.tools.epnk.pnmlcoremodel.impl.AttributeImpl;
-
-import dtu.mbse.groupi.yawl.Place;
 import dtu.mbse.groupi.yawl.PlaceType;
 import dtu.mbse.groupi.yawl.PlaceTypes;
 import dtu.mbse.groupi.yawl.YawlPackage;
@@ -24,7 +19,6 @@ import dtu.mbse.groupi.yawl.YawlPackage;
  * </p>
  * <ul>
  *   <li>{@link dtu.mbse.groupi.yawl.impl.PlaceTypeImpl#getText <em>Text</em>}</li>
- *   <li>{@link dtu.mbse.groupi.yawl.impl.PlaceTypeImpl#getPlace <em>Place</em>}</li>
  * </ul>
  *
  * @generated
@@ -95,98 +89,11 @@ public class PlaceTypeImpl extends AttributeImpl implements PlaceType {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public Place getPlace() {
-		if (eContainerFeatureID() != YawlPackage.PLACE_TYPE__PLACE) return null;
-		return (Place)eInternalContainer();
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public NotificationChain basicSetPlace(Place newPlace, NotificationChain msgs) {
-		msgs = eBasicSetContainer((InternalEObject)newPlace, YawlPackage.PLACE_TYPE__PLACE, msgs);
-		return msgs;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public void setPlace(Place newPlace) {
-		if (newPlace != eInternalContainer() || (eContainerFeatureID() != YawlPackage.PLACE_TYPE__PLACE && newPlace != null)) {
-			if (EcoreUtil.isAncestor(this, newPlace))
-				throw new IllegalArgumentException("Recursive containment not allowed for " + toString());
-			NotificationChain msgs = null;
-			if (eInternalContainer() != null)
-				msgs = eBasicRemoveFromContainer(msgs);
-			if (newPlace != null)
-				msgs = ((InternalEObject)newPlace).eInverseAdd(this, YawlPackage.PLACE__TYPE, Place.class, msgs);
-			msgs = basicSetPlace(newPlace, msgs);
-			if (msgs != null) msgs.dispatch();
-		}
-		else if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, YawlPackage.PLACE_TYPE__PLACE, newPlace, newPlace));
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	@Override
-	public NotificationChain eInverseAdd(InternalEObject otherEnd, int featureID, NotificationChain msgs) {
-		switch (featureID) {
-			case YawlPackage.PLACE_TYPE__PLACE:
-				if (eInternalContainer() != null)
-					msgs = eBasicRemoveFromContainer(msgs);
-				return basicSetPlace((Place)otherEnd, msgs);
-		}
-		return super.eInverseAdd(otherEnd, featureID, msgs);
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	@Override
-	public NotificationChain eInverseRemove(InternalEObject otherEnd, int featureID, NotificationChain msgs) {
-		switch (featureID) {
-			case YawlPackage.PLACE_TYPE__PLACE:
-				return basicSetPlace(null, msgs);
-		}
-		return super.eInverseRemove(otherEnd, featureID, msgs);
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	@Override
-	public NotificationChain eBasicRemoveFromContainerFeature(NotificationChain msgs) {
-		switch (eContainerFeatureID()) {
-			case YawlPackage.PLACE_TYPE__PLACE:
-				return eInternalContainer().eInverseRemove(this, YawlPackage.PLACE__TYPE, Place.class, msgs);
-		}
-		return super.eBasicRemoveFromContainerFeature(msgs);
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
 	@Override
 	public Object eGet(int featureID, boolean resolve, boolean coreType) {
 		switch (featureID) {
 			case YawlPackage.PLACE_TYPE__TEXT:
 				return getText();
-			case YawlPackage.PLACE_TYPE__PLACE:
-				return getPlace();
 		}
 		return super.eGet(featureID, resolve, coreType);
 	}
@@ -201,9 +108,6 @@ public class PlaceTypeImpl extends AttributeImpl implements PlaceType {
 		switch (featureID) {
 			case YawlPackage.PLACE_TYPE__TEXT:
 				setText((PlaceTypes)newValue);
-				return;
-			case YawlPackage.PLACE_TYPE__PLACE:
-				setPlace((Place)newValue);
 				return;
 		}
 		super.eSet(featureID, newValue);
@@ -220,9 +124,6 @@ public class PlaceTypeImpl extends AttributeImpl implements PlaceType {
 			case YawlPackage.PLACE_TYPE__TEXT:
 				setText(TEXT_EDEFAULT);
 				return;
-			case YawlPackage.PLACE_TYPE__PLACE:
-				setPlace((Place)null);
-				return;
 		}
 		super.eUnset(featureID);
 	}
@@ -237,8 +138,6 @@ public class PlaceTypeImpl extends AttributeImpl implements PlaceType {
 		switch (featureID) {
 			case YawlPackage.PLACE_TYPE__TEXT:
 				return text != TEXT_EDEFAULT;
-			case YawlPackage.PLACE_TYPE__PLACE:
-				return getPlace() != null;
 		}
 		return super.eIsSet(featureID);
 	}

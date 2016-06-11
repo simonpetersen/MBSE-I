@@ -76,22 +76,13 @@ public interface YawlFactory extends EFactory {
 	PlaceType createPlaceType();
 
 	/**
-	 * Returns a new object of class '<em>Split Type</em>'.
+	 * Returns a new object of class '<em>Transition Type</em>'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @return a new object of class '<em>Split Type</em>'.
+	 * @return a new object of class '<em>Transition Type</em>'.
 	 * @generated
 	 */
-	SplitType createSplitType();
-
-	/**
-	 * Returns a new object of class '<em>Join Type</em>'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return a new object of class '<em>Join Type</em>'.
-	 * @generated
-	 */
-	JoinType createJoinType();
+	TransitionType createTransitionType();
 
 	/**
 	 * Returns the package supported by this factory.

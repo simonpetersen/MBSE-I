@@ -10,14 +10,14 @@ import org.eclipse.emf.common.util.Enumerator;
 
 /**
  * <!-- begin-user-doc -->
- * A representation of the literals of the enumeration '<em><b>Split Types</b></em>',
+ * A representation of the literals of the enumeration '<em><b>Transition Types</b></em>',
  * and utility methods for working with them.
  * <!-- end-user-doc -->
- * @see dtu.mbse.groupi.yawl.YawlPackage#getSplitTypes()
+ * @see dtu.mbse.groupi.yawl.YawlPackage#getTransitionTypes()
  * @model
  * @generated
  */
-public enum SplitTypes implements Enumerator {
+public enum TransitionTypes implements Enumerator {
 	/**
 	 * The '<em><b>Single</b></em>' literal object.
 	 * <!-- begin-user-doc -->
@@ -29,34 +29,34 @@ public enum SplitTypes implements Enumerator {
 	SINGLE(1, "single", "single"),
 
 	/**
-	 * The '<em><b>XO Rsplit</b></em>' literal object.
+	 * The '<em><b>XOR</b></em>' literal object.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see #XO_RSPLIT_VALUE
+	 * @see #XOR_VALUE
 	 * @generated
 	 * @ordered
 	 */
-	XO_RSPLIT(2, "XORsplit", "XORsplit"),
+	XOR(2, "XOR", "XOR"),
 
 	/**
-	 * The '<em><b>ORsplit</b></em>' literal object.
+	 * The '<em><b>OR</b></em>' literal object.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see #ORSPLIT_VALUE
+	 * @see #OR_VALUE
 	 * @generated
 	 * @ordered
 	 */
-	ORSPLIT(3, "ORsplit", "ORsplit"),
+	OR(3, "OR", "OR"),
 
 	/**
-	 * The '<em><b>AN Dsplit</b></em>' literal object.
+	 * The '<em><b>AND</b></em>' literal object.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see #AN_DSPLIT_VALUE
+	 * @see #AND_VALUE
 	 * @generated
 	 * @ordered
 	 */
-	AN_DSPLIT(4, "ANDsplit", "ANDsplit");
+	AND(4, "AND", "AND");
 
 	/**
 	 * The '<em><b>Single</b></em>' literal value.
@@ -74,83 +74,83 @@ public enum SplitTypes implements Enumerator {
 	public static final int SINGLE_VALUE = 1;
 
 	/**
-	 * The '<em><b>XO Rsplit</b></em>' literal value.
+	 * The '<em><b>XOR</b></em>' literal value.
 	 * <!-- begin-user-doc -->
 	 * <p>
-	 * If the meaning of '<em><b>XO Rsplit</b></em>' literal object isn't clear,
+	 * If the meaning of '<em><b>XOR</b></em>' literal object isn't clear,
 	 * there really should be more of a description here...
 	 * </p>
 	 * <!-- end-user-doc -->
-	 * @see #XO_RSPLIT
-	 * @model name="XORsplit"
+	 * @see #XOR
+	 * @model
 	 * @generated
 	 * @ordered
 	 */
-	public static final int XO_RSPLIT_VALUE = 2;
+	public static final int XOR_VALUE = 2;
 
 	/**
-	 * The '<em><b>ORsplit</b></em>' literal value.
+	 * The '<em><b>OR</b></em>' literal value.
 	 * <!-- begin-user-doc -->
 	 * <p>
-	 * If the meaning of '<em><b>ORsplit</b></em>' literal object isn't clear,
+	 * If the meaning of '<em><b>OR</b></em>' literal object isn't clear,
 	 * there really should be more of a description here...
 	 * </p>
 	 * <!-- end-user-doc -->
-	 * @see #ORSPLIT
-	 * @model name="ORsplit"
+	 * @see #OR
+	 * @model
 	 * @generated
 	 * @ordered
 	 */
-	public static final int ORSPLIT_VALUE = 3;
+	public static final int OR_VALUE = 3;
 
 	/**
-	 * The '<em><b>AN Dsplit</b></em>' literal value.
+	 * The '<em><b>AND</b></em>' literal value.
 	 * <!-- begin-user-doc -->
 	 * <p>
-	 * If the meaning of '<em><b>AN Dsplit</b></em>' literal object isn't clear,
+	 * If the meaning of '<em><b>AND</b></em>' literal object isn't clear,
 	 * there really should be more of a description here...
 	 * </p>
 	 * <!-- end-user-doc -->
-	 * @see #AN_DSPLIT
-	 * @model name="ANDsplit"
+	 * @see #AND
+	 * @model
 	 * @generated
 	 * @ordered
 	 */
-	public static final int AN_DSPLIT_VALUE = 4;
+	public static final int AND_VALUE = 4;
 
 	/**
-	 * An array of all the '<em><b>Split Types</b></em>' enumerators.
+	 * An array of all the '<em><b>Transition Types</b></em>' enumerators.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	private static final SplitTypes[] VALUES_ARRAY =
-		new SplitTypes[] {
+	private static final TransitionTypes[] VALUES_ARRAY =
+		new TransitionTypes[] {
 			SINGLE,
-			XO_RSPLIT,
-			ORSPLIT,
-			AN_DSPLIT,
+			XOR,
+			OR,
+			AND,
 		};
 
 	/**
-	 * A public read-only list of all the '<em><b>Split Types</b></em>' enumerators.
+	 * A public read-only list of all the '<em><b>Transition Types</b></em>' enumerators.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public static final List<SplitTypes> VALUES = Collections.unmodifiableList(Arrays.asList(VALUES_ARRAY));
+	public static final List<TransitionTypes> VALUES = Collections.unmodifiableList(Arrays.asList(VALUES_ARRAY));
 
 	/**
-	 * Returns the '<em><b>Split Types</b></em>' literal with the specified literal value.
+	 * Returns the '<em><b>Transition Types</b></em>' literal with the specified literal value.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @param literal the literal.
 	 * @return the matching enumerator or <code>null</code>.
 	 * @generated
 	 */
-	public static SplitTypes get(String literal) {
+	public static TransitionTypes get(String literal) {
 		for (int i = 0; i < VALUES_ARRAY.length; ++i) {
-			SplitTypes result = VALUES_ARRAY[i];
+			TransitionTypes result = VALUES_ARRAY[i];
 			if (result.toString().equals(literal)) {
 				return result;
 			}
@@ -159,16 +159,16 @@ public enum SplitTypes implements Enumerator {
 	}
 
 	/**
-	 * Returns the '<em><b>Split Types</b></em>' literal with the specified name.
+	 * Returns the '<em><b>Transition Types</b></em>' literal with the specified name.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @param name the name.
 	 * @return the matching enumerator or <code>null</code>.
 	 * @generated
 	 */
-	public static SplitTypes getByName(String name) {
+	public static TransitionTypes getByName(String name) {
 		for (int i = 0; i < VALUES_ARRAY.length; ++i) {
-			SplitTypes result = VALUES_ARRAY[i];
+			TransitionTypes result = VALUES_ARRAY[i];
 			if (result.getName().equals(name)) {
 				return result;
 			}
@@ -177,19 +177,19 @@ public enum SplitTypes implements Enumerator {
 	}
 
 	/**
-	 * Returns the '<em><b>Split Types</b></em>' literal with the specified integer value.
+	 * Returns the '<em><b>Transition Types</b></em>' literal with the specified integer value.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @param value the integer value.
 	 * @return the matching enumerator or <code>null</code>.
 	 * @generated
 	 */
-	public static SplitTypes get(int value) {
+	public static TransitionTypes get(int value) {
 		switch (value) {
 			case SINGLE_VALUE: return SINGLE;
-			case XO_RSPLIT_VALUE: return XO_RSPLIT;
-			case ORSPLIT_VALUE: return ORSPLIT;
-			case AN_DSPLIT_VALUE: return AN_DSPLIT;
+			case XOR_VALUE: return XOR;
+			case OR_VALUE: return OR;
+			case AND_VALUE: return AND;
 		}
 		return null;
 	}
@@ -221,7 +221,7 @@ public enum SplitTypes implements Enumerator {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	private SplitTypes(int value, String name, String literal) {
+	private TransitionTypes(int value, String name, String literal) {
 		this.value = value;
 		this.name = name;
 		this.literal = literal;
@@ -265,4 +265,4 @@ public enum SplitTypes implements Enumerator {
 		return literal;
 	}
 	
-} //SplitTypes
+} //TransitionTypes

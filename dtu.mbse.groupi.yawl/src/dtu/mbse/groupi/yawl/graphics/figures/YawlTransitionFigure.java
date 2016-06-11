@@ -6,11 +6,9 @@ import org.eclipse.draw2d.geometry.Rectangle;
 import org.eclipse.swt.SWT;
 import org.pnml.tools.epnk.gmf.extensions.graphics.figures.TransitionFigure;
 
-import dtu.mbse.groupi.yawl.JoinType;
-import dtu.mbse.groupi.yawl.JoinTypes;
-import dtu.mbse.groupi.yawl.SplitType;
-import dtu.mbse.groupi.yawl.SplitTypes;
 import dtu.mbse.groupi.yawl.Transition;
+import dtu.mbse.groupi.yawl.TransitionType;
+import dtu.mbse.groupi.yawl.TransitionTypes;
 
 /**
  * 
@@ -19,15 +17,10 @@ import dtu.mbse.groupi.yawl.Transition;
  */
 public class YawlTransitionFigure extends TransitionFigure {
 
-	private JType jType;
-	private SType sType;
+	private Type joinType, splitType;
 
-	private enum JType {
-		ANDjoin, other
-	}
-
-	private enum SType {
-		XORsplit, other
+	private enum Type {
+		AND, OR, XOR, single
 	}
 
 	public YawlTransitionFigure(Transition transition) {
@@ -40,55 +33,95 @@ public class YawlTransitionFigure extends TransitionFigure {
 
 	protected void fillShape(Graphics graphics) {
 		super.fillShape(graphics);
-		jType = getJoinType();
 		Rectangle rectangle = this.getClientArea();
 		graphics.setLineStyle(SWT.LINE_SOLID);
 		graphics.setLineWidth(2);
-		if (jType == JType.ANDjoin) {
-			Point midTop = new Point(rectangle.x + rectangle.width / 3, rectangle.y);
-			Point midBottom = new Point(midTop.x, rectangle.y + rectangle.height);
-			Point center = new Point(rectangle.x + rectangle.width / 3, rectangle.y + rectangle.height / 2);
+		joinType = getJoinType();
+		Point midTop = new Point(rectangle.x + rectangle.width / 3, rectangle.y);
+		Point midBottom = new Point(midTop.x, rectangle.y + rectangle.height);
+		if (joinType == Type.AND) {
+			Point center = new Point(midTop.x, rectangle.y + rectangle.height / 2);
 			Point cornerTop = rectangle.getLocation();
 			Point cornerBottom = new Point(rectangle.x, rectangle.y + rectangle.height);
 			graphics.drawLine(midTop, midBottom);
 			graphics.drawLine(center, cornerTop);
 			graphics.drawLine(center, cornerBottom);
+		} else if (joinType == Type.XOR) {
+			Point center = new Point(rectangle.x, rectangle.y + rectangle.height / 2);
+			graphics.drawLine(midTop, midBottom);
+			graphics.drawLine(midTop, center);
+			graphics.drawLine(midBottom, center);
+		} else if (joinType == Type.OR) {
+			Point centerLeft = new Point(rectangle.x, rectangle.y + rectangle.height / 2);
+			Point centerRight = new Point(midTop.x, rectangle.y + rectangle.height / 2);
+			Point centerTop = new Point(rectangle.x + (rectangle.width / 3)/2, rectangle.y);
+			Point centerBottom = new Point(centerTop.x, rectangle.y + rectangle.height);
+			graphics.drawLine(midTop, midBottom);
+			graphics.drawLine(centerTop, centerRight);
+			graphics.drawLine(centerRight, centerBottom);
+			graphics.drawLine(centerBottom, centerLeft);
+			graphics.drawLine(centerLeft, centerTop);
 		}
-		sType = getSplitType();
-		if (sType == SType.XORsplit) {
-			Point midTop = new Point(rectangle.x+rectangle.width-rectangle.width/3, rectangle.y);
-			Point midBottom = new Point(midTop.x, rectangle.y+rectangle.height);
+		splitType = getSplitType();
+		midTop = new Point(rectangle.x+rectangle.width-rectangle.width/3, rectangle.y);
+		midBottom = new Point(midTop.x, rectangle.y+rectangle.height);
+		if (splitType == Type.XOR) {
 			Point center = new Point(rectangle.x+rectangle.width, rectangle.y+rectangle.height/2);
 			graphics.drawLine(midTop, midBottom);
 			graphics.drawLine(midTop, center);
 			graphics.drawLine(midBottom, center);
+		} else if (splitType == Type.AND) {
+			Point center = new Point(midTop.x, midTop.y + rectangle.height / 2);
+			Point rightTop = new Point(rectangle.x + rectangle.width, rectangle.y);
+			Point rightBottom = new Point(rightTop.x, rectangle.y + rectangle.height);
+			graphics.drawLine(midTop, midBottom);
+			graphics.drawLine(center, rightTop);
+			graphics.drawLine(center, rightBottom);
+		} else if (splitType == Type.OR) {
+			Point centerLeft = new Point(midTop.x, rectangle.y + rectangle.height / 2);
+			Point centerRight = new Point(rectangle.x + rectangle.width, rectangle.y + rectangle.height / 2);
+			Point centerTop = new Point(rectangle.x + rectangle.width - (rectangle.width / 3)/2, rectangle.y);
+			Point centerBottom = new Point(centerTop.x, rectangle.y + rectangle.height);
+			graphics.drawLine(midTop, midBottom);
+			graphics.drawLine(centerTop, centerRight);
+			graphics.drawLine(centerRight, centerBottom);
+			graphics.drawLine(centerBottom, centerLeft);
+			graphics.drawLine(centerLeft, centerTop);
 		}
 	}
 
-	private JType getJoinType() {
+	private Type getJoinType() {
 		if (this.transition instanceof Transition) {
-			JoinType joinType = ((Transition) transition).getJoinType();
+			TransitionType joinType = ((Transition) transition).getJoinType();
 			if (joinType != null) {
 				switch (joinType.getText().getValue()) {
-				case JoinTypes.AN_DJOIN_VALUE:
-					return JType.ANDjoin;
+				case TransitionTypes.AND_VALUE:
+					return Type.AND;
+				case TransitionTypes.OR_VALUE:
+					return Type.OR;
+				case TransitionTypes.XOR_VALUE:
+					return Type.XOR;
 				}
 			}
 		}
-		return JType.other;
+		return Type.single;
 	}
 
-	private SType getSplitType() {
+	private Type getSplitType() {
 		if (this.transition instanceof Transition) {
-			SplitType splitType = ((Transition) transition).getSplitType();
+			TransitionType splitType = ((Transition) transition).getSplitType();
 			if (splitType != null) {
 				switch (splitType.getText().getValue()) {
-				case SplitTypes.XO_RSPLIT_VALUE:
-					return SType.XORsplit;
+				case TransitionTypes.XOR_VALUE:
+					return Type.XOR;
+				case TransitionTypes.AND_VALUE:
+					return Type.AND;
+				case TransitionTypes.OR_VALUE:
+					return Type.OR;
 				}
 			}
 		}
-		return SType.other;
+		return Type.single;
 	}
 
 }

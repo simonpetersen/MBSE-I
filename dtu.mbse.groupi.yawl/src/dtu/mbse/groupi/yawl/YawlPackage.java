@@ -406,22 +406,13 @@ public interface YawlPackage extends EPackage {
 	int ARC_TYPE__TEXT = PnmlcoremodelPackage.ATTRIBUTE_FEATURE_COUNT + 0;
 
 	/**
-	 * The feature id for the '<em><b>Arc</b></em>' container reference.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int ARC_TYPE__ARC = PnmlcoremodelPackage.ATTRIBUTE_FEATURE_COUNT + 1;
-
-	/**
 	 * The number of structural features of the '<em>Arc Type</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int ARC_TYPE_FEATURE_COUNT = PnmlcoremodelPackage.ATTRIBUTE_FEATURE_COUNT + 2;
+	int ARC_TYPE_FEATURE_COUNT = PnmlcoremodelPackage.ATTRIBUTE_FEATURE_COUNT + 1;
 
 	/**
 	 * The meta object id for the '{@link dtu.mbse.groupi.yawl.impl.PlaceTypeImpl <em>Place Type</em>}' class.
@@ -470,96 +461,23 @@ public interface YawlPackage extends EPackage {
 	int PLACE_TYPE__TEXT = PnmlcoremodelPackage.ATTRIBUTE_FEATURE_COUNT + 0;
 
 	/**
-	 * The feature id for the '<em><b>Place</b></em>' container reference.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int PLACE_TYPE__PLACE = PnmlcoremodelPackage.ATTRIBUTE_FEATURE_COUNT + 1;
-
-	/**
 	 * The number of structural features of the '<em>Place Type</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int PLACE_TYPE_FEATURE_COUNT = PnmlcoremodelPackage.ATTRIBUTE_FEATURE_COUNT + 2;
+	int PLACE_TYPE_FEATURE_COUNT = PnmlcoremodelPackage.ATTRIBUTE_FEATURE_COUNT + 1;
 
 	/**
-	 * The meta object id for the '{@link dtu.mbse.groupi.yawl.impl.SplitTypeImpl <em>Split Type</em>}' class.
+	 * The meta object id for the '{@link dtu.mbse.groupi.yawl.impl.TransitionTypeImpl <em>Transition Type</em>}' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see dtu.mbse.groupi.yawl.impl.SplitTypeImpl
-	 * @see dtu.mbse.groupi.yawl.impl.YawlPackageImpl#getSplitType()
+	 * @see dtu.mbse.groupi.yawl.impl.TransitionTypeImpl
+	 * @see dtu.mbse.groupi.yawl.impl.YawlPackageImpl#getTransitionType()
 	 * @generated
 	 */
-	int SPLIT_TYPE = 6;
-
-	/**
-	 * The feature id for the '<em><b>Toolspecific</b></em>' containment reference list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int SPLIT_TYPE__TOOLSPECIFIC = PnmlcoremodelPackage.ATTRIBUTE__TOOLSPECIFIC;
-
-	/**
-	 * The feature id for the '<em><b>Graphics</b></em>' containment reference.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int SPLIT_TYPE__GRAPHICS = PnmlcoremodelPackage.ATTRIBUTE__GRAPHICS;
-
-	/**
-	 * The feature id for the '<em><b>Unknown</b></em>' containment reference list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int SPLIT_TYPE__UNKNOWN = PnmlcoremodelPackage.ATTRIBUTE__UNKNOWN;
-
-	/**
-	 * The feature id for the '<em><b>Text</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int SPLIT_TYPE__TEXT = PnmlcoremodelPackage.ATTRIBUTE_FEATURE_COUNT + 0;
-
-	/**
-	 * The feature id for the '<em><b>Transition</b></em>' container reference.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int SPLIT_TYPE__TRANSITION = PnmlcoremodelPackage.ATTRIBUTE_FEATURE_COUNT + 1;
-
-	/**
-	 * The number of structural features of the '<em>Split Type</em>' class.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int SPLIT_TYPE_FEATURE_COUNT = PnmlcoremodelPackage.ATTRIBUTE_FEATURE_COUNT + 2;
-
-	/**
-	 * The meta object id for the '{@link dtu.mbse.groupi.yawl.impl.JoinTypeImpl <em>Join Type</em>}' class.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see dtu.mbse.groupi.yawl.impl.JoinTypeImpl
-	 * @see dtu.mbse.groupi.yawl.impl.YawlPackageImpl#getJoinType()
-	 * @generated
-	 */
-	int JOIN_TYPE = 7;
+	int TRANSITION_TYPE = 6;
 
 	/**
 	 * The feature id for the '<em><b>Toolspecific</b></em>' containment reference list.
@@ -568,7 +486,7 @@ public interface YawlPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int JOIN_TYPE__TOOLSPECIFIC = PnmlcoremodelPackage.ATTRIBUTE__TOOLSPECIFIC;
+	int TRANSITION_TYPE__TOOLSPECIFIC = PnmlcoremodelPackage.ATTRIBUTE__TOOLSPECIFIC;
 
 	/**
 	 * The feature id for the '<em><b>Graphics</b></em>' containment reference.
@@ -577,7 +495,7 @@ public interface YawlPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int JOIN_TYPE__GRAPHICS = PnmlcoremodelPackage.ATTRIBUTE__GRAPHICS;
+	int TRANSITION_TYPE__GRAPHICS = PnmlcoremodelPackage.ATTRIBUTE__GRAPHICS;
 
 	/**
 	 * The feature id for the '<em><b>Unknown</b></em>' containment reference list.
@@ -586,7 +504,7 @@ public interface YawlPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int JOIN_TYPE__UNKNOWN = PnmlcoremodelPackage.ATTRIBUTE__UNKNOWN;
+	int TRANSITION_TYPE__UNKNOWN = PnmlcoremodelPackage.ATTRIBUTE__UNKNOWN;
 
 	/**
 	 * The feature id for the '<em><b>Text</b></em>' attribute.
@@ -595,25 +513,16 @@ public interface YawlPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int JOIN_TYPE__TEXT = PnmlcoremodelPackage.ATTRIBUTE_FEATURE_COUNT + 0;
+	int TRANSITION_TYPE__TEXT = PnmlcoremodelPackage.ATTRIBUTE_FEATURE_COUNT + 0;
 
 	/**
-	 * The feature id for the '<em><b>Transition</b></em>' container reference.
+	 * The number of structural features of the '<em>Transition Type</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int JOIN_TYPE__TRANSITION = PnmlcoremodelPackage.ATTRIBUTE_FEATURE_COUNT + 1;
-
-	/**
-	 * The number of structural features of the '<em>Join Type</em>' class.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int JOIN_TYPE_FEATURE_COUNT = PnmlcoremodelPackage.ATTRIBUTE_FEATURE_COUNT + 2;
+	int TRANSITION_TYPE_FEATURE_COUNT = PnmlcoremodelPackage.ATTRIBUTE_FEATURE_COUNT + 1;
 
 	/**
 	 * The meta object id for the '{@link dtu.mbse.groupi.yawl.ArcTypes <em>Arc Types</em>}' enum.
@@ -623,7 +532,7 @@ public interface YawlPackage extends EPackage {
 	 * @see dtu.mbse.groupi.yawl.impl.YawlPackageImpl#getArcTypes()
 	 * @generated
 	 */
-	int ARC_TYPES = 8;
+	int ARC_TYPES = 7;
 
 	/**
 	 * The meta object id for the '{@link dtu.mbse.groupi.yawl.PlaceTypes <em>Place Types</em>}' enum.
@@ -633,27 +542,17 @@ public interface YawlPackage extends EPackage {
 	 * @see dtu.mbse.groupi.yawl.impl.YawlPackageImpl#getPlaceTypes()
 	 * @generated
 	 */
-	int PLACE_TYPES = 9;
+	int PLACE_TYPES = 8;
 
 	/**
-	 * The meta object id for the '{@link dtu.mbse.groupi.yawl.SplitTypes <em>Split Types</em>}' enum.
+	 * The meta object id for the '{@link dtu.mbse.groupi.yawl.TransitionTypes <em>Transition Types</em>}' enum.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see dtu.mbse.groupi.yawl.SplitTypes
-	 * @see dtu.mbse.groupi.yawl.impl.YawlPackageImpl#getSplitTypes()
+	 * @see dtu.mbse.groupi.yawl.TransitionTypes
+	 * @see dtu.mbse.groupi.yawl.impl.YawlPackageImpl#getTransitionTypes()
 	 * @generated
 	 */
-	int SPLIT_TYPES = 10;
-
-	/**
-	 * The meta object id for the '{@link dtu.mbse.groupi.yawl.JoinTypes <em>Join Types</em>}' enum.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see dtu.mbse.groupi.yawl.JoinTypes
-	 * @see dtu.mbse.groupi.yawl.impl.YawlPackageImpl#getJoinTypes()
-	 * @generated
-	 */
-	int JOIN_TYPES = 11;
+	int TRANSITION_TYPES = 9;
 
 	/**
 	 * Returns the meta object for class '{@link dtu.mbse.groupi.yawl.Place <em>Place</em>}'.
@@ -761,17 +660,6 @@ public interface YawlPackage extends EPackage {
 	EAttribute getArcType_Text();
 
 	/**
-	 * Returns the meta object for the container reference '{@link dtu.mbse.groupi.yawl.ArcType#getArc <em>Arc</em>}'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return the meta object for the container reference '<em>Arc</em>'.
-	 * @see dtu.mbse.groupi.yawl.ArcType#getArc()
-	 * @see #getArcType()
-	 * @generated
-	 */
-	EReference getArcType_Arc();
-
-	/**
 	 * Returns the meta object for class '{@link dtu.mbse.groupi.yawl.PlaceType <em>Place Type</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -793,79 +681,25 @@ public interface YawlPackage extends EPackage {
 	EAttribute getPlaceType_Text();
 
 	/**
-	 * Returns the meta object for the container reference '{@link dtu.mbse.groupi.yawl.PlaceType#getPlace <em>Place</em>}'.
+	 * Returns the meta object for class '{@link dtu.mbse.groupi.yawl.TransitionType <em>Transition Type</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @return the meta object for the container reference '<em>Place</em>'.
-	 * @see dtu.mbse.groupi.yawl.PlaceType#getPlace()
-	 * @see #getPlaceType()
+	 * @return the meta object for class '<em>Transition Type</em>'.
+	 * @see dtu.mbse.groupi.yawl.TransitionType
 	 * @generated
 	 */
-	EReference getPlaceType_Place();
+	EClass getTransitionType();
 
 	/**
-	 * Returns the meta object for class '{@link dtu.mbse.groupi.yawl.SplitType <em>Split Type</em>}'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return the meta object for class '<em>Split Type</em>'.
-	 * @see dtu.mbse.groupi.yawl.SplitType
-	 * @generated
-	 */
-	EClass getSplitType();
-
-	/**
-	 * Returns the meta object for the attribute '{@link dtu.mbse.groupi.yawl.SplitType#getText <em>Text</em>}'.
+	 * Returns the meta object for the attribute '{@link dtu.mbse.groupi.yawl.TransitionType#getText <em>Text</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @return the meta object for the attribute '<em>Text</em>'.
-	 * @see dtu.mbse.groupi.yawl.SplitType#getText()
-	 * @see #getSplitType()
+	 * @see dtu.mbse.groupi.yawl.TransitionType#getText()
+	 * @see #getTransitionType()
 	 * @generated
 	 */
-	EAttribute getSplitType_Text();
-
-	/**
-	 * Returns the meta object for the container reference '{@link dtu.mbse.groupi.yawl.SplitType#getTransition <em>Transition</em>}'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return the meta object for the container reference '<em>Transition</em>'.
-	 * @see dtu.mbse.groupi.yawl.SplitType#getTransition()
-	 * @see #getSplitType()
-	 * @generated
-	 */
-	EReference getSplitType_Transition();
-
-	/**
-	 * Returns the meta object for class '{@link dtu.mbse.groupi.yawl.JoinType <em>Join Type</em>}'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return the meta object for class '<em>Join Type</em>'.
-	 * @see dtu.mbse.groupi.yawl.JoinType
-	 * @generated
-	 */
-	EClass getJoinType();
-
-	/**
-	 * Returns the meta object for the attribute '{@link dtu.mbse.groupi.yawl.JoinType#getText <em>Text</em>}'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return the meta object for the attribute '<em>Text</em>'.
-	 * @see dtu.mbse.groupi.yawl.JoinType#getText()
-	 * @see #getJoinType()
-	 * @generated
-	 */
-	EAttribute getJoinType_Text();
-
-	/**
-	 * Returns the meta object for the container reference '{@link dtu.mbse.groupi.yawl.JoinType#getTransition <em>Transition</em>}'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return the meta object for the container reference '<em>Transition</em>'.
-	 * @see dtu.mbse.groupi.yawl.JoinType#getTransition()
-	 * @see #getJoinType()
-	 * @generated
-	 */
-	EReference getJoinType_Transition();
+	EAttribute getTransitionType_Text();
 
 	/**
 	 * Returns the meta object for enum '{@link dtu.mbse.groupi.yawl.ArcTypes <em>Arc Types</em>}'.
@@ -888,24 +722,14 @@ public interface YawlPackage extends EPackage {
 	EEnum getPlaceTypes();
 
 	/**
-	 * Returns the meta object for enum '{@link dtu.mbse.groupi.yawl.SplitTypes <em>Split Types</em>}'.
+	 * Returns the meta object for enum '{@link dtu.mbse.groupi.yawl.TransitionTypes <em>Transition Types</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @return the meta object for enum '<em>Split Types</em>'.
-	 * @see dtu.mbse.groupi.yawl.SplitTypes
+	 * @return the meta object for enum '<em>Transition Types</em>'.
+	 * @see dtu.mbse.groupi.yawl.TransitionTypes
 	 * @generated
 	 */
-	EEnum getSplitTypes();
-
-	/**
-	 * Returns the meta object for enum '{@link dtu.mbse.groupi.yawl.JoinTypes <em>Join Types</em>}'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return the meta object for enum '<em>Join Types</em>'.
-	 * @see dtu.mbse.groupi.yawl.JoinTypes
-	 * @generated
-	 */
-	EEnum getJoinTypes();
+	EEnum getTransitionTypes();
 
 	/**
 	 * Returns the factory that creates the instances of the model.
@@ -1020,14 +844,6 @@ public interface YawlPackage extends EPackage {
 		EAttribute ARC_TYPE__TEXT = eINSTANCE.getArcType_Text();
 
 		/**
-		 * The meta object literal for the '<em><b>Arc</b></em>' container reference feature.
-		 * <!-- begin-user-doc -->
-		 * <!-- end-user-doc -->
-		 * @generated
-		 */
-		EReference ARC_TYPE__ARC = eINSTANCE.getArcType_Arc();
-
-		/**
 		 * The meta object literal for the '{@link dtu.mbse.groupi.yawl.impl.PlaceTypeImpl <em>Place Type</em>}' class.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
@@ -1046,22 +862,14 @@ public interface YawlPackage extends EPackage {
 		EAttribute PLACE_TYPE__TEXT = eINSTANCE.getPlaceType_Text();
 
 		/**
-		 * The meta object literal for the '<em><b>Place</b></em>' container reference feature.
+		 * The meta object literal for the '{@link dtu.mbse.groupi.yawl.impl.TransitionTypeImpl <em>Transition Type</em>}' class.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
+		 * @see dtu.mbse.groupi.yawl.impl.TransitionTypeImpl
+		 * @see dtu.mbse.groupi.yawl.impl.YawlPackageImpl#getTransitionType()
 		 * @generated
 		 */
-		EReference PLACE_TYPE__PLACE = eINSTANCE.getPlaceType_Place();
-
-		/**
-		 * The meta object literal for the '{@link dtu.mbse.groupi.yawl.impl.SplitTypeImpl <em>Split Type</em>}' class.
-		 * <!-- begin-user-doc -->
-		 * <!-- end-user-doc -->
-		 * @see dtu.mbse.groupi.yawl.impl.SplitTypeImpl
-		 * @see dtu.mbse.groupi.yawl.impl.YawlPackageImpl#getSplitType()
-		 * @generated
-		 */
-		EClass SPLIT_TYPE = eINSTANCE.getSplitType();
+		EClass TRANSITION_TYPE = eINSTANCE.getTransitionType();
 
 		/**
 		 * The meta object literal for the '<em><b>Text</b></em>' attribute feature.
@@ -1069,41 +877,7 @@ public interface YawlPackage extends EPackage {
 		 * <!-- end-user-doc -->
 		 * @generated
 		 */
-		EAttribute SPLIT_TYPE__TEXT = eINSTANCE.getSplitType_Text();
-
-		/**
-		 * The meta object literal for the '<em><b>Transition</b></em>' container reference feature.
-		 * <!-- begin-user-doc -->
-		 * <!-- end-user-doc -->
-		 * @generated
-		 */
-		EReference SPLIT_TYPE__TRANSITION = eINSTANCE.getSplitType_Transition();
-
-		/**
-		 * The meta object literal for the '{@link dtu.mbse.groupi.yawl.impl.JoinTypeImpl <em>Join Type</em>}' class.
-		 * <!-- begin-user-doc -->
-		 * <!-- end-user-doc -->
-		 * @see dtu.mbse.groupi.yawl.impl.JoinTypeImpl
-		 * @see dtu.mbse.groupi.yawl.impl.YawlPackageImpl#getJoinType()
-		 * @generated
-		 */
-		EClass JOIN_TYPE = eINSTANCE.getJoinType();
-
-		/**
-		 * The meta object literal for the '<em><b>Text</b></em>' attribute feature.
-		 * <!-- begin-user-doc -->
-		 * <!-- end-user-doc -->
-		 * @generated
-		 */
-		EAttribute JOIN_TYPE__TEXT = eINSTANCE.getJoinType_Text();
-
-		/**
-		 * The meta object literal for the '<em><b>Transition</b></em>' container reference feature.
-		 * <!-- begin-user-doc -->
-		 * <!-- end-user-doc -->
-		 * @generated
-		 */
-		EReference JOIN_TYPE__TRANSITION = eINSTANCE.getJoinType_Transition();
+		EAttribute TRANSITION_TYPE__TEXT = eINSTANCE.getTransitionType_Text();
 
 		/**
 		 * The meta object literal for the '{@link dtu.mbse.groupi.yawl.ArcTypes <em>Arc Types</em>}' enum.
@@ -1126,24 +900,14 @@ public interface YawlPackage extends EPackage {
 		EEnum PLACE_TYPES = eINSTANCE.getPlaceTypes();
 
 		/**
-		 * The meta object literal for the '{@link dtu.mbse.groupi.yawl.SplitTypes <em>Split Types</em>}' enum.
+		 * The meta object literal for the '{@link dtu.mbse.groupi.yawl.TransitionTypes <em>Transition Types</em>}' enum.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
-		 * @see dtu.mbse.groupi.yawl.SplitTypes
-		 * @see dtu.mbse.groupi.yawl.impl.YawlPackageImpl#getSplitTypes()
+		 * @see dtu.mbse.groupi.yawl.TransitionTypes
+		 * @see dtu.mbse.groupi.yawl.impl.YawlPackageImpl#getTransitionTypes()
 		 * @generated
 		 */
-		EEnum SPLIT_TYPES = eINSTANCE.getSplitTypes();
-
-		/**
-		 * The meta object literal for the '{@link dtu.mbse.groupi.yawl.JoinTypes <em>Join Types</em>}' enum.
-		 * <!-- begin-user-doc -->
-		 * <!-- end-user-doc -->
-		 * @see dtu.mbse.groupi.yawl.JoinTypes
-		 * @see dtu.mbse.groupi.yawl.impl.YawlPackageImpl#getJoinTypes()
-		 * @generated
-		 */
-		EEnum JOIN_TYPES = eINSTANCE.getJoinTypes();
+		EEnum TRANSITION_TYPES = eINSTANCE.getTransitionTypes();
 
 	}
 

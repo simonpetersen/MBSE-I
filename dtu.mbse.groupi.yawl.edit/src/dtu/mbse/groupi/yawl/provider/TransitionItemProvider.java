@@ -143,12 +143,35 @@ public class TransitionItemProvider extends org.pnml.tools.epnk.pnmlcoremodel.pr
 		newChildDescriptors.add
 			(createChildParameter
 				(YawlPackage.Literals.TRANSITION__SPLIT_TYPE,
-				 YawlFactory.eINSTANCE.createSplitType()));
+				 YawlFactory.eINSTANCE.createTransitionType()));
 
 		newChildDescriptors.add
 			(createChildParameter
 				(YawlPackage.Literals.TRANSITION__JOIN_TYPE,
-				 YawlFactory.eINSTANCE.createJoinType()));
+				 YawlFactory.eINSTANCE.createTransitionType()));
+	}
+
+	/**
+	 * This returns the label text for {@link org.eclipse.emf.edit.command.CreateChildCommand}.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public String getCreateChildText(Object owner, Object feature, Object child, Collection<?> selection) {
+		Object childFeature = feature;
+		Object childObject = child;
+
+		boolean qualify =
+			childFeature == YawlPackage.Literals.TRANSITION__SPLIT_TYPE ||
+			childFeature == YawlPackage.Literals.TRANSITION__JOIN_TYPE;
+
+		if (qualify) {
+			return getString
+				("_UI_CreateChild_text2",
+				 new Object[] { getTypeText(childObject), getFeatureText(childFeature), getTypeText(owner) });
+		}
+		return super.getCreateChildText(owner, feature, child, selection);
 	}
 
 	/**

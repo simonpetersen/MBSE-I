@@ -22,7 +22,6 @@ package dtu.mbse.groupi.yawl;
 public interface Place extends org.pnml.tools.epnk.pnmlcoremodel.Place {
 	/**
 	 * Returns the value of the '<em><b>Type</b></em>' containment reference.
-	 * It is bidirectional and its opposite is '{@link dtu.mbse.groupi.yawl.PlaceType#getPlace <em>Place</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <p>
 	 * If the meaning of the '<em>Type</em>' attribute isn't clear,
@@ -32,8 +31,7 @@ public interface Place extends org.pnml.tools.epnk.pnmlcoremodel.Place {
 	 * @return the value of the '<em>Type</em>' containment reference.
 	 * @see #setType(PlaceType)
 	 * @see dtu.mbse.groupi.yawl.YawlPackage#getPlace_Type()
-	 * @see dtu.mbse.groupi.yawl.PlaceType#getPlace
-	 * @model opposite="place" containment="true"
+	 * @model containment="true" required="true"
 	 * @generated
 	 */
 	PlaceType getType();

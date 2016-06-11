@@ -128,19 +128,11 @@ public class YawlSwitch<T> extends Switch<T> {
 				if (result == null) result = defaultCase(theEObject);
 				return result;
 			}
-			case YawlPackage.SPLIT_TYPE: {
-				SplitType splitType = (SplitType)theEObject;
-				T result = caseSplitType(splitType);
-				if (result == null) result = caseAttribute(splitType);
-				if (result == null) result = caseLabel(splitType);
-				if (result == null) result = defaultCase(theEObject);
-				return result;
-			}
-			case YawlPackage.JOIN_TYPE: {
-				JoinType joinType = (JoinType)theEObject;
-				T result = caseJoinType(joinType);
-				if (result == null) result = caseAttribute(joinType);
-				if (result == null) result = caseLabel(joinType);
+			case YawlPackage.TRANSITION_TYPE: {
+				TransitionType transitionType = (TransitionType)theEObject;
+				T result = caseTransitionType(transitionType);
+				if (result == null) result = caseAttribute(transitionType);
+				if (result == null) result = caseLabel(transitionType);
 				if (result == null) result = defaultCase(theEObject);
 				return result;
 			}
@@ -239,32 +231,17 @@ public class YawlSwitch<T> extends Switch<T> {
 	}
 
 	/**
-	 * Returns the result of interpreting the object as an instance of '<em>Split Type</em>'.
+	 * Returns the result of interpreting the object as an instance of '<em>Transition Type</em>'.
 	 * <!-- begin-user-doc -->
 	 * This implementation returns null;
 	 * returning a non-null result will terminate the switch.
 	 * <!-- end-user-doc -->
 	 * @param object the target of the switch.
-	 * @return the result of interpreting the object as an instance of '<em>Split Type</em>'.
+	 * @return the result of interpreting the object as an instance of '<em>Transition Type</em>'.
 	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
 	 * @generated
 	 */
-	public T caseSplitType(SplitType object) {
-		return null;
-	}
-
-	/**
-	 * Returns the result of interpreting the object as an instance of '<em>Join Type</em>'.
-	 * <!-- begin-user-doc -->
-	 * This implementation returns null;
-	 * returning a non-null result will terminate the switch.
-	 * <!-- end-user-doc -->
-	 * @param object the target of the switch.
-	 * @return the result of interpreting the object as an instance of '<em>Join Type</em>'.
-	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
-	 * @generated
-	 */
-	public T caseJoinType(JoinType object) {
+	public T caseTransitionType(TransitionType object) {
 		return null;
 	}
 

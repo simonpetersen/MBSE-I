@@ -100,12 +100,8 @@ public class YawlAdapterFactory extends AdapterFactoryImpl {
 				return createPlaceTypeAdapter();
 			}
 			@Override
-			public Adapter caseSplitType(SplitType object) {
-				return createSplitTypeAdapter();
-			}
-			@Override
-			public Adapter caseJoinType(JoinType object) {
-				return createJoinTypeAdapter();
+			public Adapter caseTransitionType(TransitionType object) {
+				return createTransitionTypeAdapter();
 			}
 			@Override
 			public Adapter caseID(ID object) {
@@ -256,30 +252,16 @@ public class YawlAdapterFactory extends AdapterFactoryImpl {
 	}
 
 	/**
-	 * Creates a new adapter for an object of class '{@link dtu.mbse.groupi.yawl.SplitType <em>Split Type</em>}'.
+	 * Creates a new adapter for an object of class '{@link dtu.mbse.groupi.yawl.TransitionType <em>Transition Type</em>}'.
 	 * <!-- begin-user-doc -->
 	 * This default implementation returns null so that we can easily ignore cases;
 	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
 	 * <!-- end-user-doc -->
 	 * @return the new adapter.
-	 * @see dtu.mbse.groupi.yawl.SplitType
+	 * @see dtu.mbse.groupi.yawl.TransitionType
 	 * @generated
 	 */
-	public Adapter createSplitTypeAdapter() {
-		return null;
-	}
-
-	/**
-	 * Creates a new adapter for an object of class '{@link dtu.mbse.groupi.yawl.JoinType <em>Join Type</em>}'.
-	 * <!-- begin-user-doc -->
-	 * This default implementation returns null so that we can easily ignore cases;
-	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
-	 * <!-- end-user-doc -->
-	 * @return the new adapter.
-	 * @see dtu.mbse.groupi.yawl.JoinType
-	 * @generated
-	 */
-	public Adapter createJoinTypeAdapter() {
+	public Adapter createTransitionTypeAdapter() {
 		return null;
 	}
 

@@ -2,14 +2,13 @@
  */
 package dtu.mbse.groupi.yawl.impl;
 
-import dtu.mbse.groupi.yawl.JoinType;
 import org.eclipse.emf.common.notify.Notification;
 import org.eclipse.emf.common.notify.NotificationChain;
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.InternalEObject;
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
-import dtu.mbse.groupi.yawl.SplitType;
 import dtu.mbse.groupi.yawl.Transition;
+import dtu.mbse.groupi.yawl.TransitionType;
 import dtu.mbse.groupi.yawl.YawlPackage;
 
 /**
@@ -35,7 +34,7 @@ public class TransitionImpl extends org.pnml.tools.epnk.pnmlcoremodel.impl.Trans
 	 * @generated
 	 * @ordered
 	 */
-	protected SplitType splitType;
+	protected TransitionType splitType;
 	/**
 	 * The cached value of the '{@link #getJoinType() <em>Join Type</em>}' containment reference.
 	 * <!-- begin-user-doc -->
@@ -44,7 +43,7 @@ public class TransitionImpl extends org.pnml.tools.epnk.pnmlcoremodel.impl.Trans
 	 * @generated
 	 * @ordered
 	 */
-	protected JoinType joinType;
+	protected TransitionType joinType;
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -69,7 +68,7 @@ public class TransitionImpl extends org.pnml.tools.epnk.pnmlcoremodel.impl.Trans
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public SplitType getSplitType() {
+	public TransitionType getSplitType() {
 		return splitType;
 	}
 
@@ -78,8 +77,8 @@ public class TransitionImpl extends org.pnml.tools.epnk.pnmlcoremodel.impl.Trans
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public NotificationChain basicSetSplitType(SplitType newSplitType, NotificationChain msgs) {
-		SplitType oldSplitType = splitType;
+	public NotificationChain basicSetSplitType(TransitionType newSplitType, NotificationChain msgs) {
+		TransitionType oldSplitType = splitType;
 		splitType = newSplitType;
 		if (eNotificationRequired()) {
 			ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, YawlPackage.TRANSITION__SPLIT_TYPE, oldSplitType, newSplitType);
@@ -93,13 +92,13 @@ public class TransitionImpl extends org.pnml.tools.epnk.pnmlcoremodel.impl.Trans
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public void setSplitType(SplitType newSplitType) {
+	public void setSplitType(TransitionType newSplitType) {
 		if (newSplitType != splitType) {
 			NotificationChain msgs = null;
 			if (splitType != null)
-				msgs = ((InternalEObject)splitType).eInverseRemove(this, YawlPackage.SPLIT_TYPE__TRANSITION, SplitType.class, msgs);
+				msgs = ((InternalEObject)splitType).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - YawlPackage.TRANSITION__SPLIT_TYPE, null, msgs);
 			if (newSplitType != null)
-				msgs = ((InternalEObject)newSplitType).eInverseAdd(this, YawlPackage.SPLIT_TYPE__TRANSITION, SplitType.class, msgs);
+				msgs = ((InternalEObject)newSplitType).eInverseAdd(this, EOPPOSITE_FEATURE_BASE - YawlPackage.TRANSITION__SPLIT_TYPE, null, msgs);
 			msgs = basicSetSplitType(newSplitType, msgs);
 			if (msgs != null) msgs.dispatch();
 		}
@@ -112,7 +111,7 @@ public class TransitionImpl extends org.pnml.tools.epnk.pnmlcoremodel.impl.Trans
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public JoinType getJoinType() {
+	public TransitionType getJoinType() {
 		return joinType;
 	}
 
@@ -121,8 +120,8 @@ public class TransitionImpl extends org.pnml.tools.epnk.pnmlcoremodel.impl.Trans
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public NotificationChain basicSetJoinType(JoinType newJoinType, NotificationChain msgs) {
-		JoinType oldJoinType = joinType;
+	public NotificationChain basicSetJoinType(TransitionType newJoinType, NotificationChain msgs) {
+		TransitionType oldJoinType = joinType;
 		joinType = newJoinType;
 		if (eNotificationRequired()) {
 			ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, YawlPackage.TRANSITION__JOIN_TYPE, oldJoinType, newJoinType);
@@ -136,38 +135,18 @@ public class TransitionImpl extends org.pnml.tools.epnk.pnmlcoremodel.impl.Trans
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public void setJoinType(JoinType newJoinType) {
+	public void setJoinType(TransitionType newJoinType) {
 		if (newJoinType != joinType) {
 			NotificationChain msgs = null;
 			if (joinType != null)
-				msgs = ((InternalEObject)joinType).eInverseRemove(this, YawlPackage.JOIN_TYPE__TRANSITION, JoinType.class, msgs);
+				msgs = ((InternalEObject)joinType).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - YawlPackage.TRANSITION__JOIN_TYPE, null, msgs);
 			if (newJoinType != null)
-				msgs = ((InternalEObject)newJoinType).eInverseAdd(this, YawlPackage.JOIN_TYPE__TRANSITION, JoinType.class, msgs);
+				msgs = ((InternalEObject)newJoinType).eInverseAdd(this, EOPPOSITE_FEATURE_BASE - YawlPackage.TRANSITION__JOIN_TYPE, null, msgs);
 			msgs = basicSetJoinType(newJoinType, msgs);
 			if (msgs != null) msgs.dispatch();
 		}
 		else if (eNotificationRequired())
 			eNotify(new ENotificationImpl(this, Notification.SET, YawlPackage.TRANSITION__JOIN_TYPE, newJoinType, newJoinType));
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	@Override
-	public NotificationChain eInverseAdd(InternalEObject otherEnd, int featureID, NotificationChain msgs) {
-		switch (featureID) {
-			case YawlPackage.TRANSITION__SPLIT_TYPE:
-				if (splitType != null)
-					msgs = ((InternalEObject)splitType).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - YawlPackage.TRANSITION__SPLIT_TYPE, null, msgs);
-				return basicSetSplitType((SplitType)otherEnd, msgs);
-			case YawlPackage.TRANSITION__JOIN_TYPE:
-				if (joinType != null)
-					msgs = ((InternalEObject)joinType).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - YawlPackage.TRANSITION__JOIN_TYPE, null, msgs);
-				return basicSetJoinType((JoinType)otherEnd, msgs);
-		}
-		return super.eInverseAdd(otherEnd, featureID, msgs);
 	}
 
 	/**
@@ -211,10 +190,10 @@ public class TransitionImpl extends org.pnml.tools.epnk.pnmlcoremodel.impl.Trans
 	public void eSet(int featureID, Object newValue) {
 		switch (featureID) {
 			case YawlPackage.TRANSITION__SPLIT_TYPE:
-				setSplitType((SplitType)newValue);
+				setSplitType((TransitionType)newValue);
 				return;
 			case YawlPackage.TRANSITION__JOIN_TYPE:
-				setJoinType((JoinType)newValue);
+				setJoinType((TransitionType)newValue);
 				return;
 		}
 		super.eSet(featureID, newValue);
@@ -229,10 +208,10 @@ public class TransitionImpl extends org.pnml.tools.epnk.pnmlcoremodel.impl.Trans
 	public void eUnset(int featureID) {
 		switch (featureID) {
 			case YawlPackage.TRANSITION__SPLIT_TYPE:
-				setSplitType((SplitType)null);
+				setSplitType((TransitionType)null);
 				return;
 			case YawlPackage.TRANSITION__JOIN_TYPE:
-				setJoinType((JoinType)null);
+				setJoinType((TransitionType)null);
 				return;
 		}
 		super.eUnset(featureID);

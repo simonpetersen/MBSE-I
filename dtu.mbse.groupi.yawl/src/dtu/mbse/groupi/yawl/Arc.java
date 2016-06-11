@@ -22,7 +22,6 @@ package dtu.mbse.groupi.yawl;
 public interface Arc extends org.pnml.tools.epnk.pnmlcoremodel.Arc {
 	/**
 	 * Returns the value of the '<em><b>Type</b></em>' containment reference.
-	 * It is bidirectional and its opposite is '{@link dtu.mbse.groupi.yawl.ArcType#getArc <em>Arc</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <p>
 	 * If the meaning of the '<em>Type</em>' attribute isn't clear,
@@ -32,8 +31,7 @@ public interface Arc extends org.pnml.tools.epnk.pnmlcoremodel.Arc {
 	 * @return the value of the '<em>Type</em>' containment reference.
 	 * @see #setType(ArcType)
 	 * @see dtu.mbse.groupi.yawl.YawlPackage#getArc_Type()
-	 * @see dtu.mbse.groupi.yawl.ArcType#getArc
-	 * @model opposite="arc" containment="true"
+	 * @model containment="true" required="true"
 	 * @generated
 	 */
 	ArcType getType();

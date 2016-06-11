@@ -60,8 +60,7 @@ public class YawlFactoryImpl extends EFactoryImpl implements YawlFactory {
 			case YawlPackage.ARC: return createArc();
 			case YawlPackage.ARC_TYPE: return createArcType();
 			case YawlPackage.PLACE_TYPE: return createPlaceType();
-			case YawlPackage.SPLIT_TYPE: return createSplitType();
-			case YawlPackage.JOIN_TYPE: return createJoinType();
+			case YawlPackage.TRANSITION_TYPE: return createTransitionType();
 			default:
 				throw new IllegalArgumentException("The class '" + eClass.getName() + "' is not a valid classifier");
 		}
@@ -79,10 +78,8 @@ public class YawlFactoryImpl extends EFactoryImpl implements YawlFactory {
 				return createArcTypesFromString(eDataType, initialValue);
 			case YawlPackage.PLACE_TYPES:
 				return createPlaceTypesFromString(eDataType, initialValue);
-			case YawlPackage.SPLIT_TYPES:
-				return createSplitTypesFromString(eDataType, initialValue);
-			case YawlPackage.JOIN_TYPES:
-				return createJoinTypesFromString(eDataType, initialValue);
+			case YawlPackage.TRANSITION_TYPES:
+				return createTransitionTypesFromString(eDataType, initialValue);
 			default:
 				throw new IllegalArgumentException("The datatype '" + eDataType.getName() + "' is not a valid classifier");
 		}
@@ -100,10 +97,8 @@ public class YawlFactoryImpl extends EFactoryImpl implements YawlFactory {
 				return convertArcTypesToString(eDataType, instanceValue);
 			case YawlPackage.PLACE_TYPES:
 				return convertPlaceTypesToString(eDataType, instanceValue);
-			case YawlPackage.SPLIT_TYPES:
-				return convertSplitTypesToString(eDataType, instanceValue);
-			case YawlPackage.JOIN_TYPES:
-				return convertJoinTypesToString(eDataType, instanceValue);
+			case YawlPackage.TRANSITION_TYPES:
+				return convertTransitionTypesToString(eDataType, instanceValue);
 			default:
 				throw new IllegalArgumentException("The datatype '" + eDataType.getName() + "' is not a valid classifier");
 		}
@@ -174,19 +169,9 @@ public class YawlFactoryImpl extends EFactoryImpl implements YawlFactory {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public SplitType createSplitType() {
-		SplitTypeImpl splitType = new SplitTypeImpl();
-		return splitType;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public JoinType createJoinType() {
-		JoinTypeImpl joinType = new JoinTypeImpl();
-		return joinType;
+	public TransitionType createTransitionType() {
+		TransitionTypeImpl transitionType = new TransitionTypeImpl();
+		return transitionType;
 	}
 
 	/**
@@ -234,8 +219,8 @@ public class YawlFactoryImpl extends EFactoryImpl implements YawlFactory {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public SplitTypes createSplitTypesFromString(EDataType eDataType, String initialValue) {
-		SplitTypes result = SplitTypes.get(initialValue);
+	public TransitionTypes createTransitionTypesFromString(EDataType eDataType, String initialValue) {
+		TransitionTypes result = TransitionTypes.get(initialValue);
 		if (result == null) throw new IllegalArgumentException("The value '" + initialValue + "' is not a valid enumerator of '" + eDataType.getName() + "'");
 		return result;
 	}
@@ -245,27 +230,7 @@ public class YawlFactoryImpl extends EFactoryImpl implements YawlFactory {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public String convertSplitTypesToString(EDataType eDataType, Object instanceValue) {
-		return instanceValue == null ? null : instanceValue.toString();
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public JoinTypes createJoinTypesFromString(EDataType eDataType, String initialValue) {
-		JoinTypes result = JoinTypes.get(initialValue);
-		if (result == null) throw new IllegalArgumentException("The value '" + initialValue + "' is not a valid enumerator of '" + eDataType.getName() + "'");
-		return result;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public String convertJoinTypesToString(EDataType eDataType, Object instanceValue) {
+	public String convertTransitionTypesToString(EDataType eDataType, Object instanceValue) {
 		return instanceValue == null ? null : instanceValue.toString();
 	}
 

@@ -23,7 +23,6 @@ package dtu.mbse.groupi.yawl;
 public interface Transition extends org.pnml.tools.epnk.pnmlcoremodel.Transition {
 	/**
 	 * Returns the value of the '<em><b>Split Type</b></em>' containment reference.
-	 * It is bidirectional and its opposite is '{@link dtu.mbse.groupi.yawl.SplitType#getTransition <em>Transition</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <p>
 	 * If the meaning of the '<em>Split Type</em>' containment reference isn't clear,
@@ -31,13 +30,12 @@ public interface Transition extends org.pnml.tools.epnk.pnmlcoremodel.Transition
 	 * </p>
 	 * <!-- end-user-doc -->
 	 * @return the value of the '<em>Split Type</em>' containment reference.
-	 * @see #setSplitType(SplitType)
+	 * @see #setSplitType(TransitionType)
 	 * @see dtu.mbse.groupi.yawl.YawlPackage#getTransition_SplitType()
-	 * @see dtu.mbse.groupi.yawl.SplitType#getTransition
-	 * @model opposite="transition" containment="true"
+	 * @model containment="true" required="true"
 	 * @generated
 	 */
-	SplitType getSplitType();
+	TransitionType getSplitType();
 
 	/**
 	 * Sets the value of the '{@link dtu.mbse.groupi.yawl.Transition#getSplitType <em>Split Type</em>}' containment reference.
@@ -47,11 +45,10 @@ public interface Transition extends org.pnml.tools.epnk.pnmlcoremodel.Transition
 	 * @see #getSplitType()
 	 * @generated
 	 */
-	void setSplitType(SplitType value);
+	void setSplitType(TransitionType value);
 
 	/**
 	 * Returns the value of the '<em><b>Join Type</b></em>' containment reference.
-	 * It is bidirectional and its opposite is '{@link dtu.mbse.groupi.yawl.JoinType#getTransition <em>Transition</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <p>
 	 * If the meaning of the '<em>Join Type</em>' reference isn't clear,
@@ -59,13 +56,12 @@ public interface Transition extends org.pnml.tools.epnk.pnmlcoremodel.Transition
 	 * </p>
 	 * <!-- end-user-doc -->
 	 * @return the value of the '<em>Join Type</em>' containment reference.
-	 * @see #setJoinType(JoinType)
+	 * @see #setJoinType(TransitionType)
 	 * @see dtu.mbse.groupi.yawl.YawlPackage#getTransition_JoinType()
-	 * @see dtu.mbse.groupi.yawl.JoinType#getTransition
-	 * @model opposite="transition" containment="true"
+	 * @model containment="true" required="true"
 	 * @generated
 	 */
-	JoinType getJoinType();
+	TransitionType getJoinType();
 
 	/**
 	 * Sets the value of the '{@link dtu.mbse.groupi.yawl.Transition#getJoinType <em>Join Type</em>}' containment reference.
@@ -75,6 +71,6 @@ public interface Transition extends org.pnml.tools.epnk.pnmlcoremodel.Transition
 	 * @see #getJoinType()
 	 * @generated
 	 */
-	void setJoinType(JoinType value);
+	void setJoinType(TransitionType value);
 
 } // Transition

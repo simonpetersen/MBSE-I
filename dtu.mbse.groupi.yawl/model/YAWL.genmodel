@@ -17,17 +17,11 @@
       <genEnumLiterals ecoreEnumLiteral="YAWL.ecore#//PlaceTypes/start"/>
       <genEnumLiterals ecoreEnumLiteral="YAWL.ecore#//PlaceTypes/end"/>
     </genEnums>
-    <genEnums typeSafeEnumCompatible="false" ecoreEnum="YAWL.ecore#//SplitTypes">
-      <genEnumLiterals ecoreEnumLiteral="YAWL.ecore#//SplitTypes/single"/>
-      <genEnumLiterals ecoreEnumLiteral="YAWL.ecore#//SplitTypes/XORsplit"/>
-      <genEnumLiterals ecoreEnumLiteral="YAWL.ecore#//SplitTypes/ORsplit"/>
-      <genEnumLiterals ecoreEnumLiteral="YAWL.ecore#//SplitTypes/ANDsplit"/>
-    </genEnums>
-    <genEnums typeSafeEnumCompatible="false" ecoreEnum="YAWL.ecore#//JoinTypes">
-      <genEnumLiterals ecoreEnumLiteral="YAWL.ecore#//JoinTypes/single"/>
-      <genEnumLiterals ecoreEnumLiteral="YAWL.ecore#//JoinTypes/XORjoin"/>
-      <genEnumLiterals ecoreEnumLiteral="YAWL.ecore#//JoinTypes/ORjoin"/>
-      <genEnumLiterals ecoreEnumLiteral="YAWL.ecore#//JoinTypes/ANDjoin"/>
+    <genEnums typeSafeEnumCompatible="false" ecoreEnum="YAWL.ecore#//TransitionTypes">
+      <genEnumLiterals ecoreEnumLiteral="YAWL.ecore#//TransitionTypes/single"/>
+      <genEnumLiterals ecoreEnumLiteral="YAWL.ecore#//TransitionTypes/XOR"/>
+      <genEnumLiterals ecoreEnumLiteral="YAWL.ecore#//TransitionTypes/OR"/>
+      <genEnumLiterals ecoreEnumLiteral="YAWL.ecore#//TransitionTypes/AND"/>
     </genEnums>
     <genClasses ecoreClass="YAWL.ecore#//Place">
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference YAWL.ecore#//Place/type"/>
@@ -42,19 +36,12 @@
     </genClasses>
     <genClasses ecoreClass="YAWL.ecore#//ArcType">
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute YAWL.ecore#//ArcType/text"/>
-      <genFeatures property="None" notify="false" createChild="false" ecoreFeature="ecore:EReference YAWL.ecore#//ArcType/arc"/>
     </genClasses>
     <genClasses ecoreClass="YAWL.ecore#//PlaceType">
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute YAWL.ecore#//PlaceType/text"/>
-      <genFeatures property="None" notify="false" createChild="false" ecoreFeature="ecore:EReference YAWL.ecore#//PlaceType/place"/>
     </genClasses>
-    <genClasses ecoreClass="YAWL.ecore#//SplitType">
-      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute YAWL.ecore#//SplitType/text"/>
-      <genFeatures property="None" notify="false" createChild="false" ecoreFeature="ecore:EReference YAWL.ecore#//SplitType/transition"/>
-    </genClasses>
-    <genClasses ecoreClass="YAWL.ecore#//JoinType">
-      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute YAWL.ecore#//JoinType/text"/>
-      <genFeatures property="None" notify="false" createChild="false" ecoreFeature="ecore:EReference YAWL.ecore#//JoinType/transition"/>
+    <genClasses ecoreClass="YAWL.ecore#//TransitionType">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute YAWL.ecore#//TransitionType/text"/>
     </genClasses>
   </genPackages>
 </genmodel:GenModel>
