@@ -109,15 +109,24 @@ public class YawlSimulatorApplication extends ApplicationWithUIManager {
 						for (Arc arc : transition.getOut()) {
 							SelectArc selectArc = YawlsimulatorFactory.eINSTANCE.createSelectArc();
 							selectArc.setObject(arc);
+//							selectArc.setSelected(true);
+							selectArc.setSourceTransition(transitionAnnotation);
+							transitionAnnotation.getOutArcs().add(selectArc);
 							annotation.getObjectAnnotations().add(selectArc);
 						}
+						if (transitionAnnotation.getOutArcs().size() > 0) 
+							transitionAnnotation.getOutArcs().get(0).setSelected(true);
 					}
 					if (transition.getJoinType().getText() == TransitionTypes.XOR) {
 						for (Arc arc : transition.getIn()) {
 							SelectArc selectArc = YawlsimulatorFactory.eINSTANCE.createSelectArc();
 							selectArc.setObject(arc);
+							selectArc.setTargetTransition(transitionAnnotation);
+							transitionAnnotation.getInArcs().add(selectArc);
 							annotation.getObjectAnnotations().add(selectArc);
 						}
+						if (transitionAnnotation.getInArcs().size() > 0) 
+							transitionAnnotation.getInArcs().get(0).setSelected(true);
 					}
 				}
 			}
