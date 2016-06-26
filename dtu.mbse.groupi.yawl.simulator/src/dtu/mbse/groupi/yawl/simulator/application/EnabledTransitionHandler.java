@@ -8,7 +8,6 @@ import org.pnml.tools.epnk.annotations.netannotations.ObjectAnnotation;
 import org.pnml.tools.epnk.applications.ui.IActionHandler;
 
 import dtu.mbse.groupi.yawl.Place;
-import dtu.mbse.groupi.yawl.Transition;
 import dtu.mbse.groupi.yawlsimulator.EnabledTransition;
 
 public class EnabledTransitionHandler implements IActionHandler {
@@ -23,14 +22,11 @@ public class EnabledTransitionHandler implements IActionHandler {
 	@Override
 	public boolean mouseDoubleClicked(MouseEvent arg0, ObjectAnnotation annotation) {
 		if (annotation instanceof EnabledTransition) {
-			Object object = annotation.getObject();
-			if (object instanceof Transition) {
-				Transition transition = (Transition) object;
-				Map<Place, Integer> marking = application.computeMarking();
-				marking = application.fireTransition(marking, transition);
-				NetAnnotation netAnnotation = application.computeAnnotation(marking);
-				application.getNetAnnotations().setCurrent(netAnnotation);
-			}
+			EnabledTransition transition = (EnabledTransition) annotation;
+			Map<Place, Integer> marking = application.computeMarking();
+			marking = application.fireTransition(marking, transition);
+			NetAnnotation netAnnotation = application.computeAnnotation(marking);
+			application.getNetAnnotations().setCurrent(netAnnotation);
 		}
 		return false;
 	}

@@ -22,11 +22,15 @@ import dtu.mbse.groupi.yawlsimulator.EnabledTransition;
 import dtu.mbse.groupi.yawlsimulator.Marking;
 import dtu.mbse.groupi.yawlsimulator.SelectArc;
 import dtu.mbse.groupi.yawlsimulator.YawlsimulatorFactory;
-
+/**
+ * 
+ * @author Simon
+ *
+ */
 public class YawlSimulatorApplication extends ApplicationWithUIManager {
 
 	private FlatAccess flatNet;
-	
+
 	public YawlSimulatorApplication(PetriNet petrinet) {
 		super(petrinet);
 		getNetAnnotations().setName("Yawl Simulator");
@@ -36,7 +40,7 @@ public class YawlSimulatorApplication extends ApplicationWithUIManager {
 		manager.addPresentationHandler(new YawlSimulatorPresentationHandler());
 		setFlatNet();
 	}
-	
+
 	public void setFlatNet() {
 		if (flatNet == null) {
 			flatNet = new FlatAccess(this.getPetrinet());
@@ -60,13 +64,11 @@ public class YawlSimulatorApplication extends ApplicationWithUIManager {
 				Place yawlPlace = (Place) place;
 				if (YawlFunctions.isStartPlace(yawlPlace))
 					marking.put(yawlPlace, 1);
-				else
-					marking.put(yawlPlace, 0);
 			}
 		}
 		return marking;
 	}
-	
+
 	Map<Place, Integer> computeMarking() {
 		Map<Place, Integer> marking = new HashMap<Place, Integer>();
 		NetAnnotation annotation = this.getNetAnnotations().getCurrent();
@@ -75,7 +77,7 @@ public class YawlSimulatorApplication extends ApplicationWithUIManager {
 				Marking markingAnnotation = (Marking) objectAnnotation;
 				Object object = markingAnnotation.getObject();
 				if (object instanceof Place) {
-					marking.put((Place) object, markingAnnotation.getValue()); 
+					marking.put((Place) object, markingAnnotation.getValue());
 				}
 			}
 		}
@@ -104,28 +106,33 @@ public class YawlSimulatorApplication extends ApplicationWithUIManager {
 					EnabledTransition transitionAnnotation = YawlsimulatorFactory.eINSTANCE.createEnabledTransition();
 					transitionAnnotation.setObject(transition);
 					annotation.getObjectAnnotations().add(transitionAnnotation);
-					if (transition.getSplitType().getText() == TransitionTypes.OR ||
-							transition.getSplitType().getText() == TransitionTypes.XOR) {
+					if (transition.getSplitType().getText() == TransitionTypes.OR
+							|| transition.getSplitType().getText() == TransitionTypes.XOR) {
 						for (Arc arc : transition.getOut()) {
 							SelectArc selectArc = YawlsimulatorFactory.eINSTANCE.createSelectArc();
 							selectArc.setObject(arc);
-//							selectArc.setSelected(true);
 							selectArc.setSourceTransition(transitionAnnotation);
 							transitionAnnotation.getOutArcs().add(selectArc);
 							annotation.getObjectAnnotations().add(selectArc);
 						}
-						if (transitionAnnotation.getOutArcs().size() > 0) 
+						if (transitionAnnotation.getOutArcs().size() > 0)
 							transitionAnnotation.getOutArcs().get(0).setSelected(true);
 					}
 					if (transition.getJoinType().getText() == TransitionTypes.XOR) {
 						for (Arc arc : transition.getIn()) {
-							SelectArc selectArc = YawlsimulatorFactory.eINSTANCE.createSelectArc();
-							selectArc.setObject(arc);
-							selectArc.setTargetTransition(transitionAnnotation);
-							transitionAnnotation.getInArcs().add(selectArc);
-							annotation.getObjectAnnotations().add(selectArc);
+							Node source = arc.getSource();
+							if (source instanceof Place) {
+								Place place = (Place) source;
+								if (marking.containsKey(place) && marking.get(place) > 0) {
+									SelectArc selectArc = YawlsimulatorFactory.eINSTANCE.createSelectArc();
+									selectArc.setObject(arc);
+									selectArc.setTargetTransition(transitionAnnotation);
+									transitionAnnotation.getOutArcs().add(selectArc);
+									annotation.getObjectAnnotations().add(selectArc);
+								}
+							}
 						}
-						if (transitionAnnotation.getInArcs().size() > 0) 
+						if (transitionAnnotation.getInArcs().size() > 0)
 							transitionAnnotation.getInArcs().get(0).setSelected(true);
 					}
 				}
@@ -154,8 +161,7 @@ public class YawlSimulatorApplication extends ApplicationWithUIManager {
 					}
 				}
 				return true;
-			} 
-			else {
+			} else {
 				for (Arc arc : flatNet.getIn(transition)) {
 					if (arc instanceof Arc) {
 						Object source = arc.getSource();
@@ -177,48 +183,96 @@ public class YawlSimulatorApplication extends ApplicationWithUIManager {
 		return false;
 	}
 
-	Map<Place, Integer> fireTransition(Map<Place, Integer> marking1, Transition transition) {
+	Map<Place, Integer> fireTransition(Map<Place, Integer> marking1, EnabledTransition transitionAnnotation) {
 		setFlatNet();
 		Map<Place, Integer> marking2 = new HashMap<Place, Integer>();
-		for (Place place: marking1.keySet()) {
+		for (Place place : marking1.keySet()) {
 			marking2.put(place, marking1.put(place, marking1.get(place)));
 		}
-		
-		// If AND-join:
-		for (Arc arc: flatNet.getIn(transition)) {
-			if (arc instanceof dtu.mbse.groupi.yawl.Arc) {
-				Arc yawlArc = (dtu.mbse.groupi.yawl.Arc) arc;
-				Object source  = yawlArc.getSource();
-				if (source instanceof PlaceNode) {
-					source = flatNet.resolve((PlaceNode) source);
-					if (source instanceof dtu.mbse.groupi.yawl.Place) {
-						Place place = (Place) source;
-						int available = 0;
-						if (marking1.containsKey(place)) {
-							available = marking1.get(place);
+
+		Transition transition = (Transition) transitionAnnotation.getObject();
+
+		if (transition.getJoinType().getText() == TransitionTypes.XOR) {
+			for (SelectArc selectArc : transitionAnnotation.getInArcs()) {
+				if (selectArc.isSelected()) {
+					Object object = selectArc.getObject();
+					if (object instanceof dtu.mbse.groupi.yawl.Arc) {
+						dtu.mbse.groupi.yawl.Arc arc = (dtu.mbse.groupi.yawl.Arc) object;
+						if (arc.getSource() instanceof Place) {
+							Place place = (Place) arc.getSource();
+							int available = 0;
+							if (marking1.containsKey(place))
+								available = marking1.get(place);
+							int needed = 1;
+							marking2.put(place, available - needed);
+//							if (marking2.get(place) <= 0) marking2.remove(place);
 						}
-						int needed = 1;
-						marking2.put(place, available-needed);
+					}
+				}
+			}
+		} else {
+			for (Arc arc : flatNet.getIn(transition)) {
+				if (arc instanceof dtu.mbse.groupi.yawl.Arc) {
+					Arc yawlArc = (dtu.mbse.groupi.yawl.Arc) arc;
+					Object source = yawlArc.getSource();
+					if (source instanceof PlaceNode) {
+						source = flatNet.resolve((PlaceNode) source);
+						if (source instanceof dtu.mbse.groupi.yawl.Place) {
+							Place place = (Place) source;
+							int available = 0;
+							if (marking1.containsKey(place)) {
+								available = marking1.get(place);
+							}
+							int needed = 1;
+							marking2.put(place, available - needed);
+//							if (marking2.get(place) <= 0) marking2.remove(place);
+							if (transition.getJoinType().getText() == TransitionTypes.SINGLE)
+								break;
+						}
 					}
 				}
 			}
 		}
+
 		
-		// If AND-split
-		for (Arc arc: flatNet.getOut(transition)) {
-			if (arc instanceof dtu.mbse.groupi.yawl.Arc) {
-				Arc yawlArc = (dtu.mbse.groupi.yawl.Arc) arc;
-				Object target  = yawlArc.getTarget();
-				if (target instanceof PlaceNode) {
-					target = flatNet.resolve((PlaceNode) target);
-					if (target instanceof Place) {
-						Place place = (Place) target;
-						int available = 0;
-						if (marking1.containsKey(place)) {
-							available = marking1.get(place);
+		if (transition.getSplitType().getText() == TransitionTypes.XOR || 
+				transition.getSplitType().getText() == TransitionTypes.OR) {
+			for (SelectArc selectArc : transitionAnnotation.getOutArcs()) {
+				if (selectArc.isSelected()) {
+					Object object = selectArc.getObject();
+					if (object instanceof dtu.mbse.groupi.yawl.Arc) {
+						dtu.mbse.groupi.yawl.Arc arc = (dtu.mbse.groupi.yawl.Arc) object;
+						Node target = arc.getTarget();
+						if (target instanceof Place) {
+							Place place = (Place) target;
+							int available = 0;
+							if (marking1.containsKey(place))
+								available = marking1.get(place);
+							int provided = 1;
+							marking2.put(place, available + provided);
 						}
-						int provided = 1; 
-						marking2.put(place, available+provided);
+					}
+
+				}
+			}
+		} else {
+			for (Arc arc : flatNet.getOut(transition)) {
+				if (arc instanceof dtu.mbse.groupi.yawl.Arc) {
+					Arc yawlArc = (dtu.mbse.groupi.yawl.Arc) arc;
+					Object target = yawlArc.getTarget();
+					if (target instanceof PlaceNode) {
+						target = flatNet.resolve((PlaceNode) target);
+						if (target instanceof Place) {
+							Place place = (Place) target;
+							int available = 0;
+							if (marking1.containsKey(place)) {
+								available = marking1.get(place);
+							}
+							int provided = 1;
+							marking2.put(place, available + provided);
+							if (transition.getSplitType().getText() == TransitionTypes.SINGLE)
+								break;
+						}
 					}
 				}
 			}
