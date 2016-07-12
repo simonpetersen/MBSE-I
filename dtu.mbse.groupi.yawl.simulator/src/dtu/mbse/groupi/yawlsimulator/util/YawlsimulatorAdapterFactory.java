@@ -84,6 +84,10 @@ public class YawlsimulatorAdapterFactory extends AdapterFactoryImpl {
 				return createMarkingAdapter();
 			}
 			@Override
+			public Adapter casePossibleToken(PossibleToken object) {
+				return createPossibleTokenAdapter();
+			}
+			@Override
 			public Adapter caseAnnotation(Annotation object) {
 				return createAnnotationAdapter();
 			}
@@ -154,6 +158,20 @@ public class YawlsimulatorAdapterFactory extends AdapterFactoryImpl {
 	 * @generated
 	 */
 	public Adapter createMarkingAdapter() {
+		return null;
+	}
+
+	/**
+	 * Creates a new adapter for an object of class '{@link dtu.mbse.groupi.yawlsimulator.PossibleToken <em>Possible Token</em>}'.
+	 * <!-- begin-user-doc -->
+	 * This default implementation returns null so that we can easily ignore cases;
+	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
+	 * <!-- end-user-doc -->
+	 * @return the new adapter.
+	 * @see dtu.mbse.groupi.yawlsimulator.PossibleToken
+	 * @generated
+	 */
+	public Adapter createPossibleTokenAdapter() {
 		return null;
 	}
 

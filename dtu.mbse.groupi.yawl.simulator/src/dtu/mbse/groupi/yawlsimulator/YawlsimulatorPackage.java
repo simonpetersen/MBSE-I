@@ -224,6 +224,44 @@ public interface YawlsimulatorPackage extends EPackage {
 
 
 	/**
+	 * The meta object id for the '{@link dtu.mbse.groupi.yawlsimulator.impl.PossibleTokenImpl <em>Possible Token</em>}' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see dtu.mbse.groupi.yawlsimulator.impl.PossibleTokenImpl
+	 * @see dtu.mbse.groupi.yawlsimulator.impl.YawlsimulatorPackageImpl#getPossibleToken()
+	 * @generated
+	 */
+	int POSSIBLE_TOKEN = 3;
+
+	/**
+	 * The feature id for the '<em><b>Net Annotations</b></em>' reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int POSSIBLE_TOKEN__NET_ANNOTATIONS = NetannotationsPackage.OBJECT_ANNOTATION__NET_ANNOTATIONS;
+
+	/**
+	 * The feature id for the '<em><b>Object</b></em>' reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int POSSIBLE_TOKEN__OBJECT = NetannotationsPackage.OBJECT_ANNOTATION__OBJECT;
+
+	/**
+	 * The number of structural features of the '<em>Possible Token</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int POSSIBLE_TOKEN_FEATURE_COUNT = NetannotationsPackage.OBJECT_ANNOTATION_FEATURE_COUNT + 0;
+
+
+	/**
 	 * Returns the meta object for class '{@link dtu.mbse.groupi.yawlsimulator.EnabledTransition <em>Enabled Transition</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -318,6 +356,16 @@ public interface YawlsimulatorPackage extends EPackage {
 	 * @generated
 	 */
 	EAttribute getMarking_Value();
+
+	/**
+	 * Returns the meta object for class '{@link dtu.mbse.groupi.yawlsimulator.PossibleToken <em>Possible Token</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for class '<em>Possible Token</em>'.
+	 * @see dtu.mbse.groupi.yawlsimulator.PossibleToken
+	 * @generated
+	 */
+	EClass getPossibleToken();
 
 	/**
 	 * Returns the factory that creates the instances of the model.
@@ -418,6 +466,16 @@ public interface YawlsimulatorPackage extends EPackage {
 		 * @generated
 		 */
 		EAttribute MARKING__VALUE = eINSTANCE.getMarking_Value();
+
+		/**
+		 * The meta object literal for the '{@link dtu.mbse.groupi.yawlsimulator.impl.PossibleTokenImpl <em>Possible Token</em>}' class.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @see dtu.mbse.groupi.yawlsimulator.impl.PossibleTokenImpl
+		 * @see dtu.mbse.groupi.yawlsimulator.impl.YawlsimulatorPackageImpl#getPossibleToken()
+		 * @generated
+		 */
+		EClass POSSIBLE_TOKEN = eINSTANCE.getPossibleToken();
 
 	}
 

@@ -95,6 +95,14 @@ public class YawlsimulatorSwitch<T> extends Switch<T> {
 				if (result == null) result = defaultCase(theEObject);
 				return result;
 			}
+			case YawlsimulatorPackage.POSSIBLE_TOKEN: {
+				PossibleToken possibleToken = (PossibleToken)theEObject;
+				T result = casePossibleToken(possibleToken);
+				if (result == null) result = caseObjectAnnotation(possibleToken);
+				if (result == null) result = caseAnnotation(possibleToken);
+				if (result == null) result = defaultCase(theEObject);
+				return result;
+			}
 			default: return defaultCase(theEObject);
 		}
 	}
@@ -141,6 +149,21 @@ public class YawlsimulatorSwitch<T> extends Switch<T> {
 	 * @generated
 	 */
 	public T caseMarking(Marking object) {
+		return null;
+	}
+
+	/**
+	 * Returns the result of interpreting the object as an instance of '<em>Possible Token</em>'.
+	 * <!-- begin-user-doc -->
+	 * This implementation returns null;
+	 * returning a non-null result will terminate the switch.
+	 * <!-- end-user-doc -->
+	 * @param object the target of the switch.
+	 * @return the result of interpreting the object as an instance of '<em>Possible Token</em>'.
+	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+	 * @generated
+	 */
+	public T casePossibleToken(PossibleToken object) {
 		return null;
 	}
 

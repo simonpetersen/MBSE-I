@@ -20,5 +20,6 @@
     <genClasses ecoreClass="YawlAnnotations.ecore#//Marking">
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute YawlAnnotations.ecore#//Marking/value"/>
     </genClasses>
+    <genClasses ecoreClass="YawlAnnotations.ecore#//PossibleToken"/>
   </genPackages>
 </genmodel:GenModel>

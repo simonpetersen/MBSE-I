@@ -4,6 +4,7 @@ package dtu.mbse.groupi.yawlsimulator.impl;
 
 import dtu.mbse.groupi.yawlsimulator.EnabledTransition;
 import dtu.mbse.groupi.yawlsimulator.Marking;
+import dtu.mbse.groupi.yawlsimulator.PossibleToken;
 import dtu.mbse.groupi.yawlsimulator.SelectArc;
 import dtu.mbse.groupi.yawlsimulator.YawlsimulatorFactory;
 import dtu.mbse.groupi.yawlsimulator.YawlsimulatorPackage;
@@ -44,6 +45,13 @@ public class YawlsimulatorPackageImpl extends EPackageImpl implements Yawlsimula
 	 * @generated
 	 */
 	private EClass markingEClass = null;
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	private EClass possibleTokenEClass = null;
 
 	/**
 	 * Creates an instance of the model <b>Package</b>, registered with
@@ -195,6 +203,15 @@ public class YawlsimulatorPackageImpl extends EPackageImpl implements Yawlsimula
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	public EClass getPossibleToken() {
+		return possibleTokenEClass;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	public YawlsimulatorFactory getYawlsimulatorFactory() {
 		return (YawlsimulatorFactory)getEFactoryInstance();
 	}
@@ -229,6 +246,8 @@ public class YawlsimulatorPackageImpl extends EPackageImpl implements Yawlsimula
 
 		markingEClass = createEClass(MARKING);
 		createEAttribute(markingEClass, MARKING__VALUE);
+
+		possibleTokenEClass = createEClass(POSSIBLE_TOKEN);
 	}
 
 	/**
@@ -266,6 +285,7 @@ public class YawlsimulatorPackageImpl extends EPackageImpl implements Yawlsimula
 		selectArcEClass.getESuperTypes().add(theNetannotationsPackage.getObjectAnnotation());
 		markingEClass.getESuperTypes().add(theNetannotationsPackage.getTextualAnnotation());
 		markingEClass.getESuperTypes().add(theNetannotationsPackage.getObjectAnnotation());
+		possibleTokenEClass.getESuperTypes().add(theNetannotationsPackage.getObjectAnnotation());
 
 		// Initialize classes and features; add operations and parameters
 		initEClass(enabledTransitionEClass, EnabledTransition.class, "EnabledTransition", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
@@ -279,6 +299,8 @@ public class YawlsimulatorPackageImpl extends EPackageImpl implements Yawlsimula
 
 		initEClass(markingEClass, Marking.class, "Marking", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 		initEAttribute(getMarking_Value(), ecorePackage.getEInt(), "value", null, 0, 1, Marking.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+
+		initEClass(possibleTokenEClass, PossibleToken.class, "PossibleToken", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 
 		// Create resource
 		createResource(eNS_URI);

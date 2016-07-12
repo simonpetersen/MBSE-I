@@ -59,6 +59,7 @@ public class YawlsimulatorFactoryImpl extends EFactoryImpl implements Yawlsimula
 			case YawlsimulatorPackage.ENABLED_TRANSITION: return createEnabledTransition();
 			case YawlsimulatorPackage.SELECT_ARC: return createSelectArc();
 			case YawlsimulatorPackage.MARKING: return createMarking();
+			case YawlsimulatorPackage.POSSIBLE_TOKEN: return createPossibleToken();
 			default:
 				throw new IllegalArgumentException("The class '" + eClass.getName() + "' is not a valid classifier");
 		}
@@ -92,6 +93,16 @@ public class YawlsimulatorFactoryImpl extends EFactoryImpl implements Yawlsimula
 	public Marking createMarking() {
 		MarkingImpl marking = new MarkingImpl();
 		return marking;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public PossibleToken createPossibleToken() {
+		PossibleTokenImpl possibleToken = new PossibleTokenImpl();
+		return possibleToken;
 	}
 
 	/**

@@ -49,6 +49,15 @@ public interface YawlsimulatorFactory extends EFactory {
 	Marking createMarking();
 
 	/**
+	 * Returns a new object of class '<em>Possible Token</em>'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return a new object of class '<em>Possible Token</em>'.
+	 * @generated
+	 */
+	PossibleToken createPossibleToken();
+
+	/**
 	 * Returns the package supported by this factory.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->

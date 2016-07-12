@@ -26,7 +26,8 @@ public class EnabledTransitionHandler implements IActionHandler {
 			Map<Place, Integer> marking = application.computeMarking();
 			marking = application.fireTransition(marking, transition);
 			NetAnnotation netAnnotation = application.computeAnnotation(marking);
-			application.getNetAnnotations().setCurrent(netAnnotation);
+			application.deleteNetAnnotationAfterCurrent();
+			application.addNetAnnotationAsCurrent(netAnnotation);
 		}
 		return false;
 	}

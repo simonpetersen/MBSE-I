@@ -14,14 +14,17 @@ import org.pnml.tools.epnk.pnmlcoremodel.Node;
 import org.pnml.tools.epnk.pnmlcoremodel.PetriNet;
 import org.pnml.tools.epnk.pnmlcoremodel.PlaceNode;
 
+import dtu.mbse.groupi.yawl.ArcTypes;
 import dtu.mbse.groupi.yawl.Place;
 import dtu.mbse.groupi.yawl.Transition;
 import dtu.mbse.groupi.yawl.TransitionTypes;
 import dtu.mbse.groupi.yawl.util.YawlFunctions;
 import dtu.mbse.groupi.yawlsimulator.EnabledTransition;
 import dtu.mbse.groupi.yawlsimulator.Marking;
+import dtu.mbse.groupi.yawlsimulator.PossibleToken;
 import dtu.mbse.groupi.yawlsimulator.SelectArc;
 import dtu.mbse.groupi.yawlsimulator.YawlsimulatorFactory;
+
 /**
  * 
  * @author Simon
@@ -135,6 +138,27 @@ public class YawlSimulatorApplication extends ApplicationWithUIManager {
 						if (transitionAnnotation.getInArcs().size() > 0)
 							transitionAnnotation.getInArcs().get(0).setSelected(true);
 					}
+					// Marker PossibleTokens
+					for (Arc arc : transition.getIn()) {
+						Node source = arc.getSource();
+						if (source instanceof Place) {
+							Place place = (Place) source;
+							if (!marking.containsKey(place) || marking.get(place) == 0) {
+								for (Arc inArc : place.getIn()) {
+									Node arcSource = inArc.getSource();
+									if (arcSource instanceof Transition) {
+										Transition sourceTransition = (Transition) arcSource;
+										if (enabled(marking, sourceTransition)) {
+											PossibleToken placeAnnotation = YawlsimulatorFactory.eINSTANCE
+													.createPossibleToken();
+											placeAnnotation.setObject(place);
+											annotation.getObjectAnnotations().add(placeAnnotation);
+										}
+									}
+								}
+							}
+						}
+					}
 				}
 			}
 		}
@@ -200,56 +224,42 @@ public class YawlSimulatorApplication extends ApplicationWithUIManager {
 						dtu.mbse.groupi.yawl.Arc arc = (dtu.mbse.groupi.yawl.Arc) object;
 						if (arc.getSource() instanceof Place) {
 							Place place = (Place) arc.getSource();
-							int available = 0;
-							if (marking1.containsKey(place))
-								available = marking1.get(place);
-							int needed = 1;
-							marking2.put(place, available - needed);
-//							if (marking2.get(place) <= 0) marking2.remove(place);
+							decrease(marking1, marking2, place, arc);
 						}
 					}
 				}
 			}
 		} else {
 			for (Arc arc : flatNet.getIn(transition)) {
-				if (arc instanceof dtu.mbse.groupi.yawl.Arc) {
-					Arc yawlArc = (dtu.mbse.groupi.yawl.Arc) arc;
-					Object source = yawlArc.getSource();
-					if (source instanceof PlaceNode) {
-						source = flatNet.resolve((PlaceNode) source);
-						if (source instanceof dtu.mbse.groupi.yawl.Place) {
-							Place place = (Place) source;
-							int available = 0;
-							if (marking1.containsKey(place)) {
-								available = marking1.get(place);
-							}
-							int needed = 1;
-							marking2.put(place, available - needed);
-//							if (marking2.get(place) <= 0) marking2.remove(place);
-							if (transition.getJoinType().getText() == TransitionTypes.SINGLE)
-								break;
-						}
+				Object source = arc.getSource();
+				if (source instanceof PlaceNode) {
+					source = flatNet.resolve((PlaceNode) source);
+					if (source instanceof dtu.mbse.groupi.yawl.Place) {
+						Place place = (Place) source;
+						decrease(marking1, marking2, place, arc);
+						if (transition.getJoinType().getText() == TransitionTypes.SINGLE)
+							break;
 					}
 				}
 			}
 		}
 
-		
-		if (transition.getSplitType().getText() == TransitionTypes.XOR || 
-				transition.getSplitType().getText() == TransitionTypes.OR) {
+		if (transition.getSplitType().getText() == TransitionTypes.XOR
+				|| transition.getSplitType().getText() == TransitionTypes.OR) {
 			for (SelectArc selectArc : transitionAnnotation.getOutArcs()) {
 				if (selectArc.isSelected()) {
 					Object object = selectArc.getObject();
-					if (object instanceof dtu.mbse.groupi.yawl.Arc) {
-						dtu.mbse.groupi.yawl.Arc arc = (dtu.mbse.groupi.yawl.Arc) object;
+					if (object instanceof Arc) {
+						Arc arc = (Arc) object;
 						Node target = arc.getTarget();
 						if (target instanceof Place) {
 							Place place = (Place) target;
-							int available = 0;
-							if (marking1.containsKey(place))
-								available = marking1.get(place);
-							int provided = 1;
-							marking2.put(place, available + provided);
+							increase(marking1, marking2, place);
+//							int available = 0;
+//							if (marking1.containsKey(place))
+//								available = marking1.get(place);
+//							int provided = 1;
+//							marking2.put(place, available + provided);
 						}
 					}
 
@@ -264,12 +274,13 @@ public class YawlSimulatorApplication extends ApplicationWithUIManager {
 						target = flatNet.resolve((PlaceNode) target);
 						if (target instanceof Place) {
 							Place place = (Place) target;
-							int available = 0;
-							if (marking1.containsKey(place)) {
-								available = marking1.get(place);
-							}
-							int provided = 1;
-							marking2.put(place, available + provided);
+							increase(marking1, marking2, place);
+//							int available = 0;
+//							if (marking1.containsKey(place)) {
+//								available = marking1.get(place);
+//							}
+//							int provided = 1;
+//							marking2.put(place, available + provided);
 							if (transition.getSplitType().getText() == TransitionTypes.SINGLE)
 								break;
 						}
@@ -279,6 +290,31 @@ public class YawlSimulatorApplication extends ApplicationWithUIManager {
 		}
 
 		return marking2;
+	}
+
+	void decrease(Map<Place, Integer> marking1, Map<Place, Integer> marking2, Place place, Arc arc) {
+		if (arc instanceof dtu.mbse.groupi.yawl.Arc) {
+			dtu.mbse.groupi.yawl.Arc yawlArc = (dtu.mbse.groupi.yawl.Arc) arc;
+			if (yawlArc.getType() != null && yawlArc.getType().getText() == ArcTypes.RESET) {
+				marking2.put(place, 0);
+			} else {
+				int available = 0;
+				if (marking1.containsKey(place)) {
+					available = marking1.get(place);
+				}
+				int needed = 1;
+				marking2.put(place, available - needed);
+			}
+		}
+	}
+
+	void increase(Map<Place, Integer> marking1, Map<Place, Integer> marking2, Place place) {
+		int available = 0;
+		if (marking1.containsKey(place)) {
+			available = marking1.get(place);
+		}
+		int provided = 1;
+		marking2.put(place, available + provided);
 	}
 
 }
