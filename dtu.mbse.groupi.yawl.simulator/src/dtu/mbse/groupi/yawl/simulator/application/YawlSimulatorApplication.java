@@ -1,7 +1,10 @@
 package dtu.mbse.groupi.yawl.simulator.application;
 
 import java.util.HashMap;
+import java.util.HashSet;
+import java.util.Iterator;
 import java.util.Map;
+import java.util.Set;
 
 import org.pnml.tools.epnk.annotations.netannotations.NetAnnotation;
 import org.pnml.tools.epnk.annotations.netannotations.NetannotationsFactory;
@@ -139,26 +142,7 @@ public class YawlSimulatorApplication extends ApplicationWithUIManager {
 							transitionAnnotation.getInArcs().get(0).setSelected(true);
 					}
 					// Marker PossibleTokens
-					for (Arc arc : transition.getIn()) {
-						Node source = arc.getSource();
-						if (source instanceof Place) {
-							Place place = (Place) source;
-							if (!marking.containsKey(place) || marking.get(place) == 0) {
-								for (Arc inArc : place.getIn()) {
-									Node arcSource = inArc.getSource();
-									if (arcSource instanceof Transition) {
-										Transition sourceTransition = (Transition) arcSource;
-										if (enabled(marking, sourceTransition)) {
-											PossibleToken placeAnnotation = YawlsimulatorFactory.eINSTANCE
-													.createPossibleToken();
-											placeAnnotation.setObject(place);
-											annotation.getObjectAnnotations().add(placeAnnotation);
-										}
-									}
-								}
-							}
-						}
-					}
+					possibleTokenMarking(transition, marking, annotation);
 				}
 			}
 		}
@@ -255,11 +239,6 @@ public class YawlSimulatorApplication extends ApplicationWithUIManager {
 						if (target instanceof Place) {
 							Place place = (Place) target;
 							increase(marking1, marking2, place);
-//							int available = 0;
-//							if (marking1.containsKey(place))
-//								available = marking1.get(place);
-//							int provided = 1;
-//							marking2.put(place, available + provided);
 						}
 					}
 
@@ -275,12 +254,6 @@ public class YawlSimulatorApplication extends ApplicationWithUIManager {
 						if (target instanceof Place) {
 							Place place = (Place) target;
 							increase(marking1, marking2, place);
-//							int available = 0;
-//							if (marking1.containsKey(place)) {
-//								available = marking1.get(place);
-//							}
-//							int provided = 1;
-//							marking2.put(place, available + provided);
 							if (transition.getSplitType().getText() == TransitionTypes.SINGLE)
 								break;
 						}
@@ -316,5 +289,35 @@ public class YawlSimulatorApplication extends ApplicationWithUIManager {
 		int provided = 1;
 		marking2.put(place, available + provided);
 	}
-
+	
+	private void possibleTokenMarking(Transition transition, Map<Place, Integer> marking, NetAnnotation annotation) {
+		for (Arc arc : transition.getIn()) {
+			Node source = arc.getSource();
+			if (source instanceof Place) {
+				Place place = (Place) source;
+				if (!marking.containsKey(place) || marking.get(place) == 0) {
+					for (Arc inArc : place.getIn()) {
+						Node arcSource = inArc.getSource();
+						if (arcSource instanceof Transition) {
+							Transition sourceTransition = (Transition) arcSource;
+							if (enabled(marking, sourceTransition)) {
+								PossibleToken placeAnnotation = YawlsimulatorFactory.eINSTANCE
+										.createPossibleToken();
+								placeAnnotation.setObject(place);
+								PossibleToken placeArcAnnotation = YawlsimulatorFactory.eINSTANCE
+										.createPossibleToken();
+								placeArcAnnotation.setObject(inArc);
+								PossibleToken arcAnnotation = YawlsimulatorFactory.eINSTANCE
+										.createPossibleToken();
+								arcAnnotation.setObject(arc);
+								annotation.getObjectAnnotations().add(arcAnnotation);
+								annotation.getObjectAnnotations().add(placeArcAnnotation);
+								annotation.getObjectAnnotations().add(placeAnnotation);
+							}
+						}
+					}
+				}
+			}
+		}
+	}
 }
