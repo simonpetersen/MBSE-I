@@ -159,10 +159,8 @@ public class YawlSimulatorApplication extends ApplicationWithUIManager {
 						if (source instanceof PlaceNode) {
 							source = flatNet.resolve((PlaceNode) source);
 							if (source instanceof Place) {
-								if (marking.containsKey(source)) {
-									if (marking.get(source) == 0)
-										return false;
-								}
+								if (!marking.containsKey(source) || marking.get(source) == 0)
+									return false;
 							}
 
 						}
@@ -189,6 +187,7 @@ public class YawlSimulatorApplication extends ApplicationWithUIManager {
 			}
 		}
 		return false;
+
 	}
 
 	Map<Place, Integer> fireTransition(Map<Place, Integer> marking1, EnabledTransition transitionAnnotation) {
@@ -289,7 +288,7 @@ public class YawlSimulatorApplication extends ApplicationWithUIManager {
 		int provided = 1;
 		marking2.put(place, available + provided);
 	}
-	
+
 	private void possibleTokenMarking(Transition transition, Map<Place, Integer> marking, NetAnnotation annotation) {
 		for (Arc arc : transition.getIn()) {
 			Node source = arc.getSource();
@@ -301,14 +300,11 @@ public class YawlSimulatorApplication extends ApplicationWithUIManager {
 						if (arcSource instanceof Transition) {
 							Transition sourceTransition = (Transition) arcSource;
 							if (enabled(marking, sourceTransition)) {
-								PossibleToken placeAnnotation = YawlsimulatorFactory.eINSTANCE
-										.createPossibleToken();
+								PossibleToken placeAnnotation = YawlsimulatorFactory.eINSTANCE.createPossibleToken();
 								placeAnnotation.setObject(place);
-								PossibleToken placeArcAnnotation = YawlsimulatorFactory.eINSTANCE
-										.createPossibleToken();
+								PossibleToken placeArcAnnotation = YawlsimulatorFactory.eINSTANCE.createPossibleToken();
 								placeArcAnnotation.setObject(inArc);
-								PossibleToken arcAnnotation = YawlsimulatorFactory.eINSTANCE
-										.createPossibleToken();
+								PossibleToken arcAnnotation = YawlsimulatorFactory.eINSTANCE.createPossibleToken();
 								arcAnnotation.setObject(arc);
 								annotation.getObjectAnnotations().add(arcAnnotation);
 								annotation.getObjectAnnotations().add(placeArcAnnotation);
